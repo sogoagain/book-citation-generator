@@ -1,0 +1,10 @@
+.App {
+    text-align: center;
+}
+
+.Page-Container {
+    display: block;
+    box-sizing: border-box;
+    max-width: 560px;
+    margin: 0 auto;
+}

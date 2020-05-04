@@ -1,0 +1,26 @@
+.Header {
+    height: 112px;
+    border-width: 0 0 8px;
+    border-style: solid;
+    border-color: rgb(52, 152, 219);
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 0 auto;
+}
+
+.Header-Container {
+    padding: 48px 16px 24px 16px;
+}
+
+@media (min-width: 620px) {
+    .Header {
+        height: 184px;
+    }
+
+    .Header-Container {
+        padding: 120px 32px 24px 32px;
+    }
+}
