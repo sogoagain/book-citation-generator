@@ -1,34 +1,16 @@
 import React from 'react';
-import './Book.css';
 import PropTypes from "prop-types";
-import BookUtils from "../utils/BookUtils";
+import BookThumbnail from "./BookThumbnail";
+import BookWriters from "./BookWriters";
+import BookYear from "./BookYear";
+import BookPublisher from "./BookPublisher";
 
-const BookThumbnail = ({thumbnail, title}) => {
-    return (
-        <img className="Book-Thumbnail" src={thumbnail} alt={title} title={title}/>
-    );
-};
-
-const BookWriters = ({writers}) => {
-    return (
-        <span className="Book-Writers">{BookUtils.getFormattedWriters(writers, 2)}</span>
-    );
-};
-
-const Book = ({
-                  book,
-                  onClick
-              }) => {
-
-    const onBookClick = (e) => {
-        onClick(book);
-    };
+const BookDescription = ({
+                             book,
+                         }) => {
 
     return (
-        <div
-            className="Book"
-            onClick={onBookClick}
-        >
+        <div>
             <div className="Book-Title">
                 <h2>{book.title}</h2>
             </div>
@@ -46,10 +28,10 @@ const Book = ({
                         <BookWriters writers={book.translators}/>
                     </div>
                     <div>
-                        <span>{book.publisher}</span>
+                        <BookPublisher publisher={book.publisher}/>
                     </div>
                     <div>
-                        <span>{BookUtils.convertISO8601toYear(book.datetime)}</span>
+                        <BookYear datetime={book.datetime}/>
                     </div>
                 </div>
             </div>
@@ -57,9 +39,8 @@ const Book = ({
     );
 };
 
-Book.propTypes = {
+BookDescription.propTypes = {
     book: PropTypes.object.isRequired,
-    onClick: PropTypes.func.isRequired,
 };
 
-export default Book;
+export default BookDescription;

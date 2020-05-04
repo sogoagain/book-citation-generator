@@ -1,51 +1,40 @@
 import React, {useState} from 'react';
 import './App.css';
-import SearchForm from "./components/SearchForm";
-import {HeaderMode, MainHeader} from "./components/MainHeader";
-import SearchResult from "./components/SearchResult";
-import BookModel from "./models/BookModel";
+import {HeaderMode, MainHeader} from "./components/header/MainHeader";
+import SearchComponent from "./components/search/SearchComponent";
+import BookDetail from "./components/book/BookDetail";
 
 const App = () => {
 
     const [headerMode, setHeaderMode] = useState(HeaderMode.NORMAL);
     const [refreshCount, setRefreshCount] = useState(0);
-    const [result, setResult] = useState({
-        books: [],
-        pagination: {
-            page: 1,
-            size: 5,
-            total: 0,
-        }
+    const [bookDetail, setBookDetail] = useState({
+        visible: false,
+        book: {},
     });
 
-    const onSearch = async (keyword) => {
-        const response = await BookModel.list(keyword);
-
+    const onSubmit = () => {
         setHeaderMode(HeaderMode.MINIMUM);
-        setResult({
-            books: response.documents,
-            pagination: {
-                ...result.pagination,
-                total: response.meta.total_count,
-            }
+        setBookDetail({
+            ...bookDetail,
+            visible: false,
         });
     };
 
     const onHeaderClick = () => {
         setRefreshCount(refreshCount + 1);
         setHeaderMode(HeaderMode.NORMAL);
-        setResult({
-            books: [],
-            pagination: {
-                page: 1,
-                size: 5,
-                total: 0,
-            }
+        setBookDetail({
+            ...bookDetail,
+            visible: false,
         });
     };
 
     const onBookDetail = (book) => {
-        console.log(book);
+        setBookDetail({
+            visible: true,
+            book: book,
+        });
     };
 
     return (
@@ -57,15 +46,17 @@ const App = () => {
                     onClick={onHeaderClick}
                 />
                 <section>
-                    <SearchForm
-                        onSearch={onSearch}
-                        refreshCount={refreshCount}
-                    />
-                    <SearchResult
-                        dataSource={result.books}
-                        pagination={result.pagination}
-                        onDetail={onBookDetail}
-                    />
+                    {
+                        bookDetail.visible ?
+                            <BookDetail book={bookDetail.book}/>
+                            :
+                            <SearchComponent
+                                refreshCount={refreshCount}
+                                onSubmit={onSubmit}
+                                onDetail={onBookDetail}
+                            />
+                    }
+
                 </section>
             </div>
         </div>

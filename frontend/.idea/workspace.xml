@@ -2,14 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="99d6fc4e-0654-4571-bde9-6c3143edc419" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/book/BookDetail.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/book/BookDetail.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/book/BookItem.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/book/BookPublisher.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/book/BookThumbnail.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/book/BookWriters.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/book/BookYear.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/search/SearchComponent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/search/SearchResult.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Book.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Book.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Book.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Book.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainHeader.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainHeader.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SearchForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SearchResult.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchResult.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Book.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book/BookItem.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Book.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MainHeader.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/MainHeader.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MainHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/MainHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/search/SearchForm.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/search/SearchForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchResult.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/book/BookDescription.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchResult.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/search/SearchResult.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +55,9 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/header" />
+      <recent name="$PROJECT_DIR$/src/components/search" />
+      <recent name="$PROJECT_DIR$/src/components/book" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -148,7 +162,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1588554210634</updated>
-      <workItem from="1588554227558" duration="25387000" />
+      <workItem from="1588554227558" duration="28584000" />
     </task>
     <servers />
   </component>
@@ -156,10 +170,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="348" y="210" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588574149005">
+    <state x="348" y="210" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588604631364">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="348" y="210" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.800@0.0.1280.800" timestamp="1588574149005" />
+    <state x="348" y="210" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.800@0.0.1280.800" timestamp="1588604631364" />
     <state x="378" y="154" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588578565565">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -188,6 +202,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="298" y="35" width="683" height="729" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1588597000713" />
+    <state width="600" height="424" key="javadoc.popup" timestamp="1588603972094">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="600" height="424" key="javadoc.popup/0.0.1280.800@0.0.1280.800" timestamp="1588603972094" />
     <state x="305" y="185" width="670" height="675" key="run.anything.popup" timestamp="1588596877862">
       <screen x="0" y="0" width="1280" height="800" />
     </state>

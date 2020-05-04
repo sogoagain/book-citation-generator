@@ -1,0 +1,38 @@
+.BookCitation {
+    max-width: 100%;
+    margin: 16px auto;
+    padding: 16px 32px;
+}
+
+@media (min-width: 620px) {
+    .BookCitation {
+        margin: 16px auto;
+    }
+}
+
+.BookCitation .Book-Title h2 {
+    font-size: 24px;
+    margin: 0 auto 24px auto;
+}
+
+.BookCitation .Flex-Thumbnail {
+    width: 40%;
+}
+
+.BookCitation .Flex-Container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.BookCitation .Flex-Description {
+    flex: 1 1 auto;
+    text-align: center;
+    font-size: 18px;
+}
+
+.BookCitation .Flex-Description div {
+    margin-bottom: 4px;
+}

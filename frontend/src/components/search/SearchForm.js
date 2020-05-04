@@ -29,7 +29,7 @@ const SearchForm = ({
 
     useEffect(() => {
         setKeyword('');
-    }, [refreshCount])
+    }, [refreshCount]);
 
     return (
         <div className="SearchForm">

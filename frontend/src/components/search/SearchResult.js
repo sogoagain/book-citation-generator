@@ -1,7 +1,7 @@
 import React from 'react';
 import './SearchResult.css';
 import PropTypes from "prop-types";
-import Book from "./Book";
+import BookItem from "../book/BookItem";
 
 const SearchResult = ({
                           dataSource,
@@ -17,7 +17,7 @@ const SearchResult = ({
         <div className="SearchResult">
             {
                 dataSource.map((book, index) => {
-                    return <Book
+                    return <BookItem
                         book={book}
                         key={index}
                         onClick={onBookClick}
