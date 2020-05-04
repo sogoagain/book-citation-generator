@@ -2,14 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="99d6fc4e-0654-4571-bde9-6c3143edc419" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/MainHeader.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/MainHeader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SearchForm.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SearchForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SearchResult.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SearchResult.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/BookModel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/mockBookData.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Book.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Book.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/BookUtils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/BookUtils.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MainHeader.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainHeader.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MainHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchForm.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchResult.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchResult.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/mockBookData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/mockBookData.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +46,7 @@
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/react-scripts" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -48,6 +55,82 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public" />
     </key>
+  </component>
+  <component name="RunManager" selected="Jest.convertISO8601toYear">
+    <configuration name="convertISO8601toYear" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/utils/BookUtils.test.js" />
+      <test-names>
+        <test-name value="convertISO8601toYear" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="getFormattedWriters" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/utils/BookUtils.test.js" />
+      <test-names>
+        <test-name value="getFormattedWriters" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="getFormattedWritersWithEmpty" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/utils/BookUtils.test.js" />
+      <test-names>
+        <test-name value="getFormattedWritersWithEmpty" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="getFormattedWritersWithMultiple" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/utils/BookUtils.test.js" />
+      <test-names>
+        <test-name value="getFormattedWritersWithMultiple" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="renders learn react link (1)" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/App.test.js" />
+      <test-names>
+        <test-name value="renders learn react link" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Jest.convertISO8601toYear" />
+        <item itemvalue="Jest.renders learn react link (1)" />
+        <item itemvalue="Jest.getFormattedWriters" />
+        <item itemvalue="Jest.getFormattedWritersWithEmpty" />
+        <item itemvalue="Jest.getFormattedWritersWithMultiple" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -71,7 +154,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1588554210634</updated>
-      <workItem from="1588554227558" duration="13653000" />
+      <workItem from="1588554227558" duration="23106000" />
     </task>
     <servers />
   </component>
@@ -87,13 +170,37 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="378" y="154" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.800@0.0.1280.800" timestamp="1588578565565" />
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1588593045310">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1588593045310" />
+    <state width="1238" height="212" key="GridCell.Tab.0.center" timestamp="1588593045309">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1588593045309" />
+    <state width="1238" height="212" key="GridCell.Tab.0.left" timestamp="1588593045308">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1588593045308" />
+    <state width="1238" height="212" key="GridCell.Tab.0.right" timestamp="1588593045310">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1588593045310" />
     <state x="317" y="232" key="com.intellij.ide.util.TipDialog" timestamp="1588557963595">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="317" y="232" key="com.intellij.ide.util.TipDialog/0.0.1280.800@0.0.1280.800" timestamp="1588557963595" />
-    <state x="298" y="35" width="683" height="729" key="find.popup" timestamp="1588580805974">
+    <state x="298" y="35" width="683" height="729" key="find.popup" timestamp="1588597000713">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="298" y="35" width="683" height="729" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1588580805974" />
+    <state x="298" y="35" width="683" height="729" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1588597000713" />
+    <state x="305" y="185" width="670" height="675" key="run.anything.popup" timestamp="1588596877862">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="305" y="185" width="670" height="675" key="run.anything.popup/0.0.1280.800@0.0.1280.800" timestamp="1588596877862" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1588595323929">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1588595323929" />
   </component>
 </project>

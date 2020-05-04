@@ -9,10 +9,10 @@ export const HeaderMode = {
     },
     MINIMUM: {
         headerStyle: {
-            height: 112,
+            height: 88,
         },
         containerStyle: {
-            paddingTop: 48,
+            paddingTop: 24,
         }
     }
 };

@@ -5,6 +5,12 @@
 .Page-Container {
     display: block;
     box-sizing: border-box;
-    max-width: 560px;
+    max-width: 372px;
     margin: 0 auto;
+}
+
+@media (min-width: 620px) {
+    .Page-Container {
+        max-width: 560px;
+    }
 }

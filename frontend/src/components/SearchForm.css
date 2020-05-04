@@ -1,8 +1,11 @@
+.SearchForm {
+    margin: 16px 0 16px 0;
+}
 
 .SearchForm .Form {
     position: relative;
-    margin: 8px auto;
-    width: 90%;
+    margin: 8px 0;
+    width: 100%;
 }
 
 .SearchForm .Search-Input-Wrap {
@@ -47,6 +50,7 @@
     width: 48px;
     height: 40px;
     background-color: rgb(52, 152, 219);
+    border: 1px solid rgb(52, 152, 219);
     color: white;
     font-size: 16px;
     font-weight: bold;

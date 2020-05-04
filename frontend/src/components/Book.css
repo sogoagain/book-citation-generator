@@ -1,0 +1,49 @@
+.Book {
+    max-width: 100%;
+    margin: 16px auto;
+    background-color: rgb(224, 224, 224);
+    padding: 16px 32px;
+}
+
+.Book-Thumbnail {
+    width: 64px;
+    height: 96px;
+}
+
+@media (min-width: 620px) {
+    .Book {
+        margin: 16px auto;
+    }
+
+    .Book-Thumbnail {
+        width: 80px;
+        height: 120px;
+    }
+}
+
+.Book-Title h2 {
+    font-size: 18px;
+    margin: 0px auto;
+    padding: 8px 0;
+}
+
+.Flex-Thumbnail {
+    width: 40%;
+}
+
+.Flex-Container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.Flex-Description {
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+.Flex-Description div {
+    margin-bottom: 4px;
+}
