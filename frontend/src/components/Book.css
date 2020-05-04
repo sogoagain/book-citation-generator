@@ -5,6 +5,10 @@
     padding: 16px 32px;
 }
 
+.Book:hover {
+    cursor: pointer;
+}
+
 .Book-Thumbnail {
     width: 64px;
     height: 96px;

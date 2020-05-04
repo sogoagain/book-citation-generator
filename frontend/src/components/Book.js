@@ -15,11 +15,22 @@ const BookWriters = ({writers}) => {
     );
 };
 
-const Book = ({book}) => {
+const Book = ({
+                  book,
+                  onClick
+              }) => {
+
+    const onBookClick = (e) => {
+        onClick(book);
+    };
+
     return (
-        <div className="Book">
+        <div
+            className="Book"
+            onClick={onBookClick}
+        >
             <div className="Book-Title">
-                <a href="localhost:3000"><h2>{book.title}</h2></a>
+                <h2>{book.title}</h2>
             </div>
             <div className="Flex-Container">
                 <div className="Flex-Thumbnail">
@@ -48,6 +59,7 @@ const Book = ({book}) => {
 
 Book.propTypes = {
     book: PropTypes.object.isRequired,
+    onClick: PropTypes.func.isRequired,
 };
 
 export default Book;

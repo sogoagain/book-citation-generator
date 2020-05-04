@@ -1,5 +1,5 @@
 .Header {
-    height: 88px;
+    height: 240px;
     border-width: 0 0 8px;
     border-style: solid;
     border-color: rgb(52, 152, 219);
@@ -12,15 +12,19 @@ h1 {
 }
 
 .Header-Container {
-    padding: 24px 16px 24px 16px;
+    padding: 176px 16px 24px 16px;
+}
+
+.Header-Text:hover {
+    cursor: pointer;
 }
 
 @media (min-width: 620px) {
     .Header {
-        height: 240px;
+        height: 280px;
     }
 
     .Header-Container {
-        padding: 176px 32px 24px 32px;
+        padding: 216px 32px 24px 32px;
     }
 }

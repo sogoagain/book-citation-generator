@@ -2,20 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="99d6fc4e-0654-4571-bde9-6c3143edc419" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Book.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Book.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/BookUtils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/BookUtils.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Book.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Book.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Book.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Book.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/MainHeader.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainHeader.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/MainHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SearchForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchForm.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/SearchForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/SearchResult.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchResult.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/mockBookData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/mockBookData.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +148,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1588554210634</updated>
-      <workItem from="1588554227558" duration="23106000" />
+      <workItem from="1588554227558" duration="25387000" />
     </task>
     <servers />
   </component>
@@ -170,22 +164,22 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="378" y="154" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.800@0.0.1280.800" timestamp="1588578565565" />
-    <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1588593045310">
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1588598714578">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1588593045310" />
-    <state width="1238" height="212" key="GridCell.Tab.0.center" timestamp="1588593045309">
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1588598714578" />
+    <state width="1238" height="212" key="GridCell.Tab.0.center" timestamp="1588598714577">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1588593045309" />
-    <state width="1238" height="212" key="GridCell.Tab.0.left" timestamp="1588593045308">
+    <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1588598714577" />
+    <state width="1238" height="212" key="GridCell.Tab.0.left" timestamp="1588598714576">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1588593045308" />
-    <state width="1238" height="212" key="GridCell.Tab.0.right" timestamp="1588593045310">
+    <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1588598714576" />
+    <state width="1238" height="212" key="GridCell.Tab.0.right" timestamp="1588598714577">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1588593045310" />
+    <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1588598714577" />
     <state x="317" y="232" key="com.intellij.ide.util.TipDialog" timestamp="1588557963595">
       <screen x="0" y="0" width="1280" height="800" />
     </state>

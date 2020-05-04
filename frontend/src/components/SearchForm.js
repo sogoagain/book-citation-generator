@@ -1,8 +1,11 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './SearchForm.css';
 import PropTypes from "prop-types";
 
-const SearchForm = ({onSearch}) => {
+const SearchForm = ({
+                        onSearch,
+                        refreshCount
+                    }) => {
 
     const [keyword, setKeyword] = useState('');
 
@@ -23,6 +26,10 @@ const SearchForm = ({onSearch}) => {
     const isVisibleResetBtn = () => {
         return keyword.length !== 0;
     };
+
+    useEffect(() => {
+        setKeyword('');
+    }, [refreshCount])
 
     return (
         <div className="SearchForm">
@@ -48,6 +55,7 @@ const SearchForm = ({onSearch}) => {
 
 SearchForm.propTypes = {
     onSearch: PropTypes.func.isRequired,
+    refreshCount: PropTypes.number.isRequired,
 };
 
 export default SearchForm;

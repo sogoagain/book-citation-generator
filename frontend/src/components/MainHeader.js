@@ -19,15 +19,24 @@ export const HeaderMode = {
 
 export const MainHeader = ({
                                text,
-                               mode
+                               mode,
+                               onClick,
                            }) => {
+
+    const onHeaderClick = (e) => {
+        onClick();
+    };
+
     return (
         <div className="MainHeader">
             <header className="Header"
                     style={mode.headerStyle}>
                 <div className="Header-Container"
                      style={mode.containerStyle}>
-                    <h1>{text}</h1>
+                    <div className="Header-Text"
+                         onClick={onHeaderClick}>
+                        <h1>{text}</h1>
+                    </div>
                 </div>
             </header>
         </div>
@@ -37,4 +46,5 @@ export const MainHeader = ({
 MainHeader.propTypes = {
     text: PropTypes.string.isRequired,
     mode: PropTypes.object.isRequired,
+    onClick: PropTypes.func.isRequired,
 };
