@@ -320,7 +320,7 @@ typings/
 .nuxt
 
 # react / gatsby 
-public/
+
 
 # vuepress build output
 .vuepress/dist
@@ -357,3 +357,7 @@ yarn-error.log
 
 # End of https://www.gitignore.io/api/vue,node,vuejs,macos,intellij
 package-lock.json
+manifest.json
+robots.txt
+frontend/.idea/sonarlint
+workspace.xml
