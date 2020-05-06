@@ -16,7 +16,8 @@ const SearchComponent = ({
             page: 1,
             size: 5,
             total: 0,
-        }
+        },
+        isSearched: false,
     });
 
     const onSearch = async (keyword) => {
@@ -27,7 +28,8 @@ const SearchComponent = ({
             pagination: {
                 ...result.pagination,
                 total: response.meta.total_count,
-            }
+            },
+            isSearched: true,
         });
         onSubmit();
     };
@@ -43,7 +45,8 @@ const SearchComponent = ({
                 page: 1,
                 size: 5,
                 total: 0,
-            }
+            },
+            isSearched: false,
         });
     }, [refreshCount]);
 
@@ -53,11 +56,15 @@ const SearchComponent = ({
                 onSearch={onSearch}
                 refreshCount={refreshCount}
             />
-            <SearchResult
-                dataSource={result.books}
-                pagination={result.pagination}
-                onDetail={onBookDetail}
-            />
+            {
+                result.isSearched ?
+                    <SearchResult
+                        dataSource={result.books}
+                        pagination={result.pagination}
+                        onDetail={onBookDetail}
+                    /> :
+                    null
+            }
         </div>
     );
 };

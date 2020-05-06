@@ -2,6 +2,7 @@ import React from 'react';
 import './SearchResult.css';
 import PropTypes from "prop-types";
 import BookItem from "../book/BookItem";
+import PaginationUtils from "../../utils/PaginationUtils";
 
 const SearchResult = ({
                           dataSource,
@@ -24,6 +25,15 @@ const SearchResult = ({
                     />
                 })
             }
+            <div className="Pagination">
+                <button type="button" className="Prev-Btn">&lt;</button>
+                {
+                    PaginationUtils.getPrintedPages(pagination).map((page, index) => {
+                        return <button type="button" className="Page" key={index}>{page}</button>
+                    })
+                }
+                <button type="button" className="Next-Btn">&gt;</button>
+            </div>
         </div>
     );
 };
