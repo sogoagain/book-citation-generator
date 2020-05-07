@@ -1,17 +1,22 @@
 import React from 'react';
-import './SearchResult.css';
 import PropTypes from "prop-types";
 import BookItem from "../book/BookItem";
-import PaginationUtils from "../../utils/PaginationUtils";
+import Pagination from "../pagination/Pagination";
 
 const SearchResult = ({
                           dataSource,
                           pagination,
                           onDetail,
                       }) => {
+    const TAG = "[SearchResult]";
+    console.log(TAG, 'init');
 
     const onBookClick = (book) => {
         onDetail(book);
+    };
+
+    const onPaginationChange = () => {
+        console.log('onPaginationChange');
     };
 
     return (
@@ -25,15 +30,7 @@ const SearchResult = ({
                     />
                 })
             }
-            <div className="Pagination">
-                <button type="button" className="Prev-Btn">&lt;</button>
-                {
-                    PaginationUtils.getPrintedPages(pagination).map((page, index) => {
-                        return <button type="button" className="Page" key={index}>{page}</button>
-                    })
-                }
-                <button type="button" className="Next-Btn">&gt;</button>
-            </div>
+            <Pagination pagination={pagination} onChange={onPaginationChange}/>
         </div>
     );
 };

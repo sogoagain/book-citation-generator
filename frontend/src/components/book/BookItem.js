@@ -7,6 +7,8 @@ const BookItem = ({
                       book,
                       onClick,
                   }) => {
+   const TAG = "[BookItem]";
+    console.log(TAG, 'init');
 
     const onBookClick = (e) => {
         onClick(book);
@@ -14,7 +16,7 @@ const BookItem = ({
 
     return (
         <div
-            className="Book"
+            className="BookItem"
             onClick={onBookClick}
         >
             <BookDescription book={book}/>
@@ -27,4 +29,4 @@ BookItem.propTypes = {
     onClick: PropTypes.func.isRequired,
 };
 
-export default BookItem;
+export default React.memo(BookItem);

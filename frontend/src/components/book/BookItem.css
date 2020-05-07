@@ -1,41 +1,42 @@
-.Book {
+.BookItem {
     max-width: 100%;
     margin: 16px auto;
     background-color: rgb(224, 224, 224);
     padding: 16px 32px;
+    border-radius: 16px;
 }
 
-.Book:hover {
+.BookItem:hover {
     cursor: pointer;
 }
 
-.Book .Book-Thumbnail {
+.BookItem .Book-Thumbnail {
     width: 64px;
     height: 96px;
 }
 
 @media (min-width: 620px) {
-    .Book {
+    .BookItem {
         margin: 16px auto;
     }
 
-    .Book .Book-Thumbnail {
+    .BookItem .Book-Thumbnail {
         width: 80px;
         height: 120px;
     }
 }
 
-.Book .Book-Title h2 {
+.BookItem .Book-Title h2 {
     font-size: 18px;
     margin: 0 auto;
     padding: 8px 0;
 }
 
-.Book .Flex-Thumbnail {
+.BookItem .Flex-Thumbnail {
     width: 40%;
 }
 
-.Book .Flex-Container {
+.BookItem .Flex-Container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -43,11 +44,11 @@
     align-items: center;
 }
 
-.Book .Flex-Description {
+.BookItem .Flex-Description {
     flex: 1 1 auto;
     text-align: center;
 }
 
-.Book .Flex-Description div {
+.BookItem .Flex-Description div {
     margin-bottom: 4px;
 }

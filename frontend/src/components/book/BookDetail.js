@@ -6,9 +6,11 @@ import BookDescription from "./BookDescription";
 const BookDetail = ({
                         book,
                     }) => {
+    const TAG = "[BookDetail]";
+    console.log(TAG, 'init');
 
     return (
-        <div className="BookCitation">
+        <div className="BookDetail">
             <BookDescription book={book}/>
         </div>
     );

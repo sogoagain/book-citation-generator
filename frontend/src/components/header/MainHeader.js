@@ -22,6 +22,8 @@ export const MainHeader = ({
                                mode,
                                onClick,
                            }) => {
+    const TAG = "[MainHeader]";
+    console.log(TAG, 'init');
 
     const onHeaderClick = (e) => {
         onClick();

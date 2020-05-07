@@ -9,6 +9,8 @@ const SearchComponent = ({
                              onSubmit,
                              onDetail,
                          }) => {
+    const TAG = "[SearchComponent]";
+    console.log(TAG, 'init');
 
     const [result, setResult] = useState({
         books: [],
@@ -39,6 +41,9 @@ const SearchComponent = ({
     };
 
     useEffect(() => {
+        if (refreshCount === 0) {
+            return;
+        }
         setResult({
             books: [],
             pagination: {

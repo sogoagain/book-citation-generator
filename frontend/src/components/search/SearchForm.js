@@ -6,6 +6,8 @@ const SearchForm = ({
                         onSearch,
                         refreshCount
                     }) => {
+    const TAG = "[SearchForm]";
+    console.log(TAG, 'init');
 
     const [keyword, setKeyword] = useState('');
 
@@ -28,6 +30,9 @@ const SearchForm = ({
     };
 
     useEffect(() => {
+        if (refreshCount === 0) {
+            return;
+        }
         setKeyword('');
     }, [refreshCount]);
 

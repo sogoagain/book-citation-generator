@@ -8,7 +8,6 @@ import BookPublisher from "./BookPublisher";
 const BookDescription = ({
                              book,
                          }) => {
-
     return (
         <div>
             <div className="Book-Title">
