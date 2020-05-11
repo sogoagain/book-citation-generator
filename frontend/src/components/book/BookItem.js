@@ -7,7 +7,7 @@ const BookItem = ({
                       book,
                       onClick,
                   }) => {
-   const TAG = "[BookItem]";
+    const TAG = "[BookItem]";
     console.log(TAG, 'init');
 
     const onBookClick = (e) => {

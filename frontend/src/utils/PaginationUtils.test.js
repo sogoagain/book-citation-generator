@@ -98,3 +98,78 @@ test('getPrintedPagesWithLess5', () => {
     // then
     expect(printedPages).toStrictEqual([1, 2, 3]);
 });
+
+test('getPrintedPagesWithPage2', () => {
+    // given
+    const pagination = {
+        page: 2,
+        size: 5,
+        total: 762
+    };
+
+    // when
+    const printedPages = PaginationUtils.getPrintedPages(pagination);
+
+    // then
+    expect(printedPages).toStrictEqual([1, 2, 3, 4, 5]);
+});
+
+test('isFirstPage', () => {
+    // given
+    const pagination = {
+        page: 1,
+        size: 5,
+        total: 762,
+    };
+
+    // when
+    const isFirstPage = PaginationUtils.isFirstPage(pagination);
+
+    // then
+    expect(isFirstPage).toBeTruthy();
+});
+
+test('isFirstPageWithWrong', () => {
+    // given
+    const pagination = {
+        page: 2,
+        size: 5,
+        total: 762,
+    };
+
+    // when
+    const isFirstPage = PaginationUtils.isFirstPage(pagination);
+
+    // then
+    expect(isFirstPage).toBeFalsy();
+});
+
+test('isLastPage', () => {
+    // given
+    const pagination = {
+        page: 2,
+        size: 5,
+        total: 10,
+    };
+
+    // when
+    const isLastPage = PaginationUtils.isLastPage(pagination);
+
+    // then
+    expect(isLastPage).toBeTruthy();
+});
+
+test('isLastPageWithWrong', () => {
+    // given
+    const pagination = {
+        page: 1,
+        size: 5,
+        total: 10,
+    };
+
+    // when
+    const isLastPage = PaginationUtils.isLastPage(pagination);
+
+    // then
+    expect(isLastPage).toBeFalsy();
+});

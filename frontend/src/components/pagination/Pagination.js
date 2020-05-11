@@ -11,19 +11,26 @@ const Pagination = ({
     console.log(TAG, 'init');
 
     const onPrevBtnClick = () => {
-        console.log('onPrevBtnClick');
+        const page = pagination.page - 1;
+        onChange(page);
     };
 
     const onNextBtnClick = () => {
-        console.log('onNextBtnClick');
+        const page = pagination.page + 1;
+        onChange(page);
     };
 
-    const onPageClick = () => {
-        console.log('onPageClick');
+    const onPageClick = (e) => {
+        const page = parseInt(e.target.value, 10);
+        onChange(page);
     };
 
     const isFirstPage = () => {
-        return pagination.page === 1;
+        return PaginationUtils.isFirstPage(pagination);
+    };
+
+    const isLastPage = () => {
+        return PaginationUtils.isLastPage(pagination);
     };
 
     return (
@@ -35,10 +42,11 @@ const Pagination = ({
                     if (pagination.page === page) {
                         pageBtnStyle = "Selected-Page";
                     }
-                    return <button type="button" className={pageBtnStyle} key={index} onClick={onPageClick}>{page}</button>
+                    return <button type="button" className={pageBtnStyle} key={index} onClick={onPageClick}
+                                   value={page}>{page}</button>
                 })
             }
-            <button type="button" className="Next-Btn" onClick={onNextBtnClick}>&gt;</button>
+            <button type="button" className="Next-Btn" onClick={onNextBtnClick} disabled={isLastPage()}>&gt;</button>
         </div>
     );
 };

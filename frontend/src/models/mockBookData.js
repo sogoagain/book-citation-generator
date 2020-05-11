@@ -95,7 +95,7 @@ export default {
     ],
     "meta": {
         "is_end": false,
-        "pageable_count": 762,
-        "total_count": 762
+        "pageable_count": 27,
+        "total_count": 27
     }
 }

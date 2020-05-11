@@ -26,6 +26,7 @@ const SearchComponent = ({
         const response = await BookModel.list(keyword);
 
         setResult({
+            ...result,
             books: response.documents,
             pagination: {
                 ...result.pagination,
@@ -33,11 +34,22 @@ const SearchComponent = ({
             },
             isSearched: true,
         });
+
         onSubmit();
     };
 
     const onBookDetail = (book) => {
         onDetail(book);
+    };
+
+    const onResultChange = (page) => {
+        setResult({
+            ...result,
+            pagination: {
+                ...result.pagination,
+                page: page,
+            }
+        })
     };
 
     useEffect(() => {
@@ -67,6 +79,7 @@ const SearchComponent = ({
                         dataSource={result.books}
                         pagination={result.pagination}
                         onDetail={onBookDetail}
+                        onChange={onResultChange}
                     /> :
                     null
             }

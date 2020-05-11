@@ -7,6 +7,7 @@ const SearchResult = ({
                           dataSource,
                           pagination,
                           onDetail,
+                          onChange,
                       }) => {
     const TAG = "[SearchResult]";
     console.log(TAG, 'init');
@@ -15,8 +16,8 @@ const SearchResult = ({
         onDetail(book);
     };
 
-    const onPaginationChange = () => {
-        console.log('onPaginationChange');
+    const onPaginationChange = (page) => {
+        onChange(page);
     };
 
     return (
@@ -39,6 +40,7 @@ SearchResult.propTypes = {
     dataSource: PropTypes.array.isRequired,
     pagination: PropTypes.object.isRequired,
     onDetail: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
 };
 
 export default SearchResult;

@@ -14,7 +14,7 @@ PaginationUtils.getPrintedPageIndex = function (pagination) {
         }
     }
 
-    if (pagination.page < 2) {
+    if (pagination.page <= 2) {
         return {
             start: 1,
             end: 5,
@@ -43,6 +43,14 @@ PaginationUtils.getPrintedPages = function (pagination) {
     }
 
     return printedPages;
+};
+
+PaginationUtils.isFirstPage = function (pagination) {
+    return pagination.page === 1;
+};
+
+PaginationUtils.isLastPage = function (pagination) {
+    return pagination.page === this.getTotalPages(pagination);
 };
 
 export default PaginationUtils;
