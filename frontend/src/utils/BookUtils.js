@@ -18,5 +18,9 @@ BookUtils.convertISO8601toYear = (iso8601) => {
     return date.getFullYear();
 };
 
+BookUtils.printMLAStyle = (book) => {
+    return '';
+};
+
 export default BookUtils;
 
