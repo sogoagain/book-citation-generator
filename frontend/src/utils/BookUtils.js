@@ -18,8 +18,22 @@ BookUtils.convertISO8601toYear = (iso8601) => {
     return date.getFullYear();
 };
 
+BookUtils.getFormattedMLAStyleAuthors = (writers) => {
+    if (writers.length <= 2) {
+        return writers.join(", ");
+    }
+
+    const firstWriter = writers[0];
+    return `${firstWriter} 외`;
+};
+
 BookUtils.printMLAStyle = (book) => {
-    return '';
+    const writer = BookUtils.getFormattedMLAStyleAuthors(book.authors);
+    const title = book.title;
+    const publisher = book.publisher;
+    const dateYear = new Date(book.datetime).getFullYear();
+
+    return `${writer}. ${title}. ${publisher}, ${dateYear}.`;
 };
 
 export default BookUtils;
