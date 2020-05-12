@@ -21,7 +21,6 @@
     line-height: 1.5;
     border: 1px solid rgb(224, 224, 224);
     min-height: 40px;
-
 }
 
 .SearchForm .btn-reset {
@@ -54,4 +53,8 @@
     color: white;
     font-size: 16px;
     font-weight: bold;
+}
+
+.SearchForm .btn-submit:hover {
+    cursor: pointer;
 }

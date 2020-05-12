@@ -9,7 +9,7 @@ const BookDescription = ({
                              book,
                          }) => {
     return (
-        <div>
+        <div className="BookDescription">
             <div className="Book-Title">
                 <h2>{book.title}</h2>
             </div>

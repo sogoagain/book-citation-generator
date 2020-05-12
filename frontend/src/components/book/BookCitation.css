@@ -1,0 +1,52 @@
+.BookCitation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.BookCitation button {
+    box-sizing: border-box;
+    width: 48px;
+    height: 40px;
+    background-color: rgb(52, 152, 219);
+    border: 1px solid rgb(52, 152, 219);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.BookCitation button:hover {
+    cursor: pointer;
+}
+
+.BookCitation-Text {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 8px 16px;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.5;
+    border: 1px solid rgb(224, 224, 224);
+    background-color: rgb(224, 224, 224);
+    min-height: 40px;
+}
+
+.BookCitation-label {
+    box-sizing: border-box;
+    width: 48px;
+    height: 40px;
+    background-color: #5ad877;
+    border: 1px solid #5ad877;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 38px;
+    text-align: center;
+}
+
+@media (min-width: 620px) {
+    .BookCitation button {
+        font-size: 14px;
+    }
+}

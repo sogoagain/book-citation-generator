@@ -6,10 +6,8 @@
     border-radius: 16px;
 }
 
-@media (min-width: 620px) {
-    .BookDetail {
-        margin: 16px auto;
-    }
+.BookDetail .BookDescription {
+    margin: 32px auto;
 }
 
 .BookDetail .Book-Title h2 {
@@ -37,4 +35,14 @@
 
 .BookDetail .Flex-Description div {
     margin-bottom: 4px;
+}
+
+@media (min-width: 620px) {
+    .BookDetail {
+        margin: 16px auto;
+    }
+
+    .BookDetail .BookDescription {
+        margin: 72px auto;
+    }
 }
