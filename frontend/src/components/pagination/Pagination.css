@@ -21,6 +21,10 @@
     cursor: pointer;
 }
 
+.Pagination button:focus {
+    outline: none;
+}
+
 .Selected-Page {
     color: rgb(52, 152, 219);
     background-color: rgb(224, 224, 224);

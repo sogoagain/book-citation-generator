@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import './BookCitation.css';
 import PropTypes from "prop-types";
 import BookUtils from "../../utils/BookUtils";
@@ -9,13 +9,13 @@ const BookCitation = ({
     const TAG = "[BookCitation]";
     console.log(TAG, 'init');
 
-    const inputRef = useRef();
-
-    const getMLAStyle = () => {
-        return BookUtils.printMLAStyle(book);
-    };
+    const [citation, setCitation] = useState({
+        MLA: BookUtils.printMLAStyle(book),
+    });
+    const inputRef = useRef(null);
 
     const onCopy = (e) => {
+        inputRef.current.focus();
         inputRef.current.select();
         inputRef.current.setSelectionRange(0, 99999);
         document.execCommand("copy");
@@ -26,7 +26,13 @@ const BookCitation = ({
     return (
         <div className="BookCitation">
             <label className="BookCitation-label" form="MLA">MLA</label>
-            <input className="BookCitation-Text" type="text" id="MLA" ref={inputRef} value={getMLAStyle()} disabled/>
+            <input className="BookCitation-Text"
+                   type="text"
+                   id="MLA"
+                   ref={inputRef}
+                   onChange={() => {
+                   }} value={citation.MLA}
+                   aria-disabled/>
             {
                 document.queryCommandSupported('copy') &&
                 <button type="button" onClick={onCopy}>복사</button>
