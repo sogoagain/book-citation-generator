@@ -370,3 +370,4 @@ frontend/.idea/sonarlint
 workspace.xml
 frontend/.idea
 backend/.idea
+env.json
