@@ -7,7 +7,7 @@
 ### 사용 기술
 
 - front-end: ReactJS
-- back-end: Node.js (구현 예정)
+- back-end: AWS Serverless(Node.js), Serverless Framework
 
 ### 프로젝트 관리
 
