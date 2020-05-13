@@ -1,3 +1,10 @@
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+
 # Created by https://www.gitignore.io/api/node,react
 # Edit at https://www.gitignore.io/?templates=node,react
 
@@ -362,3 +369,4 @@ robots.txt
 frontend/.idea/sonarlint
 workspace.xml
 frontend/.idea
+backend/.idea
