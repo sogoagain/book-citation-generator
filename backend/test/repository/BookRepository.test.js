@@ -1,6 +1,6 @@
-import BookRepository from '../../src/repository/BookRepository';
-import env from '../../config/env';
-import fetch from 'node-fetch'
+const BookRepository = require('../../src/repository/BookRepository');
+const env = require('../../config/env');
+const fetch = require('node-fetch');
 
 jest.mock('node-fetch', () => jest.fn())
 

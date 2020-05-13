@@ -27,7 +27,7 @@ functions:
 custom:
   stages:
     - service
-  env: ${file(../config/env.json)}
+  env: ${file(./config/env.json)}
   webpack:
     webpackConfig: ./webpack.config.js
     includeModules: true

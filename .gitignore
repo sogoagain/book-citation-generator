@@ -371,3 +371,4 @@ workspace.xml
 frontend/.idea
 backend/.idea
 env.json
+backend/.webpack
