@@ -58,7 +58,7 @@ test('findByKeywordAndPage', async () => {
     fetch.mockImplementation(() => mockResponse);
 
     // when
-    const books = await BookRepository.findByKeywordAndPage(keyword, page);
+    const books = await BookRepository.findByKeywordAndPagination(keyword, page, 5);
 
     // then
     expect(books.documents.length).toBe(2);

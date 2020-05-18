@@ -10,6 +10,10 @@
     margin: 32px auto;
 }
 
+.BookDetail .BookCitation {
+    margin: 32px auto;
+}
+
 .BookDetail .Book-Title h2 {
     font-size: 24px;
     margin: 0 auto 24px auto;
@@ -43,6 +47,10 @@
     }
 
     .BookDetail .BookDescription {
-        margin: 72px auto;
+        margin: 16px auto;
+    }
+
+    .BookDetail .BookCitation {
+        margin: 16px auto;
     }
 }

@@ -14,6 +14,7 @@ const SearchComponent = ({
 
     const [result, setResult] = useState({
         books: [],
+        keyword: '',
         pagination: {
             page: 1,
             size: 5,
@@ -22,14 +23,20 @@ const SearchComponent = ({
         isSearched: false,
     });
 
-    const onSearch = async (keyword) => {
-        const response = await BookModel.list(keyword);
+    const searchBooks = async (keyword, page) => {
+        const response = await BookModel.list({
+            keyword: keyword,
+            page: page,
+            size: result.pagination.size,
+        });
 
         setResult({
             ...result,
             books: response.documents,
+            keyword: keyword,
             pagination: {
                 ...result.pagination,
+                page: page,
                 total: response.meta.total_count,
             },
             isSearched: true,
@@ -38,18 +45,16 @@ const SearchComponent = ({
         onSubmit();
     };
 
-    const onBookDetail = (book) => {
-        onDetail(book);
+    const onSearch = (keyword) => {
+        searchBooks(keyword, 1);
     };
 
     const onResultChange = (page) => {
-        setResult({
-            ...result,
-            pagination: {
-                ...result.pagination,
-                page: page,
-            }
-        })
+        searchBooks(result.keyword, page);
+    };
+
+    const onBookDetail = (book) => {
+        onDetail(book);
     };
 
     useEffect(() => {

@@ -22,6 +22,10 @@ const SearchForm = ({
 
     const onSubmit = (e) => {
         e.preventDefault();
+        if (keyword.length === 0) {
+            alert('도서 정보를 입력하세요.');
+            return;
+        }
         onSearch(keyword);
     };
 
@@ -41,7 +45,7 @@ const SearchForm = ({
             <form className="Form">
                 <div className="Search-Input-Wrap">
                     <input type="text"
-                           placeholder="도서 정보를 입력하세요."
+                           placeholder="어떤 책을 찾으세요?"
                            onChange={onInputChange}
                            value={keyword}/>
                 </div>

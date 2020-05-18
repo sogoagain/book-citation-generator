@@ -1,9 +1,8 @@
 const fetch = require('node-fetch');
 
-const findByKeywordAndPage = async (keyword, page) => {
+const findByKeywordAndPagination = async (keyword, pagination) => {
     const query = encodeURI(keyword);
-    const size = 5;
-    const requestURL = `https://dapi.kakao.com/v3/search/book?query=${query}&page=${page}&size=${size}`;
+    const requestURL = `https://dapi.kakao.com/v3/search/book?query=${query}&page=${pagination.page}&size=${pagination.size}`;
 
     return await fetch(requestURL, {
         method: 'GET',
@@ -15,5 +14,5 @@ const findByKeywordAndPage = async (keyword, page) => {
 };
 
 module.exports = {
-    findByKeywordAndPage: findByKeywordAndPage
+    findByKeywordAndPagination: findByKeywordAndPagination
 };

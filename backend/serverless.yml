@@ -38,6 +38,8 @@ custom:
     certificateName: ${self:custom.env.domain.cert}
     createRoute53Record: true
     securityPolicy: tls_1_2
+  serverless-offline:
+    httpPort: 4000
 
 package:
   individually: true
