@@ -1,4 +1,8 @@
-## [도서 출처 표기 문구 생성기](https://github.com/sogoagain/book-citation-generator)
+## [도서 출처 표기 문구 생성기](https://book.sogoagain.com)
+
+### 접속 URL
+
+- [https://book.sogoagain.com](https://book.sogoagain.com)
 
 ### 목적
 
