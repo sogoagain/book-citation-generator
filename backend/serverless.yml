@@ -10,7 +10,9 @@ provider:
   stackName: book-citation-api
   apiName: book-citation-api
   environment:
+    API_KAKAO: ${self:custom.env.api.api_kakao}
     KEY_KAKAO: ${self:custom.env.api.key_kakao}
+    FRONT_DOMAIN: ${self:custom.env.api.front_domain}
     MODE: 'service'
 
 functions:
@@ -33,11 +35,11 @@ custom:
     includeModules: true
   customDomain:
     domainName: ${self:custom.env.domain.name}
-    stage: 'service'
-    basePath: api
+    stage: ${opt:alias,'dev'}
+    basePath: 'api'
     certificateName: ${self:custom.env.domain.cert}
     createRoute53Record: true
-    securityPolicy: tls_1_2
+    certificateArn: ${self:custom.env.domain.certificateArn}
   serverless-offline:
     httpPort: 4000
 

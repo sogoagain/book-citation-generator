@@ -372,3 +372,5 @@ frontend/.idea
 backend/.idea
 env.json
 backend/.webpack
+.env.production
+.env.development

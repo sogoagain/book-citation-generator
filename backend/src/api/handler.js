@@ -15,6 +15,9 @@ module.exports.getBooks = async event => {
 
     return {
         statusCode: 200,
+        headers: {
+            'Access-Control-Allow-Origin': process.env.FRONT_DOMAIN
+        },
         body: JSON.stringify(books)
     };
 };

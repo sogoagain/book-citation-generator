@@ -4,7 +4,9 @@
     "node-fetch": "latest"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "sls offline --alias local",
+    "deploy": "sls deploy --alias prod"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
