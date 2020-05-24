@@ -6,6 +6,7 @@ import BookDetail from "./components/book/BookDetail";
 
 const App = () => {
     const TAG = "[App]";
+    const MAIN_TITLE = "도서 출처 표기 생성기";
     console.log(TAG, 'init');
 
     const [layout, setLayout] = useState({
@@ -55,7 +56,7 @@ const App = () => {
         <div className="App">
             <div className="Page-Container">
                 <MainHeader
-                    text={"도서 출처 표기 생성기"}
+                    text={MAIN_TITLE}
                     mode={layout.headerMode}
                     onClick={onHeaderClick}
                 />

@@ -7,6 +7,9 @@ const SearchForm = ({
                         refreshCount
                     }) => {
     const TAG = "[SearchForm]";
+    const EMPTY_INPUT_FIELD_ERROR_MESSAGE = "도서 정보를 입력하세요.";
+    const SEARCH_INPUT_PLACEHOLDER_MESSAGE = "어떤 책을 찾으세요?";
+    const SEARCH_BUTTON_TEXT = "검색";
     console.log(TAG, 'init');
 
     const [keyword, setKeyword] = useState('');
@@ -23,7 +26,7 @@ const SearchForm = ({
     const onSubmit = (e) => {
         e.preventDefault();
         if (keyword.length === 0) {
-            alert('도서 정보를 입력하세요.');
+            alert(EMPTY_INPUT_FIELD_ERROR_MESSAGE);
             return;
         }
         onSearch(keyword);
@@ -45,7 +48,7 @@ const SearchForm = ({
             <form className="Form">
                 <div className="Search-Input-Wrap">
                     <input type="text"
-                           placeholder="어떤 책을 찾으세요?"
+                           placeholder={SEARCH_INPUT_PLACEHOLDER_MESSAGE}
                            onChange={onInputChange}
                            value={keyword}/>
                 </div>
@@ -55,7 +58,7 @@ const SearchForm = ({
                 <button type="submit"
                         className="btn-submit"
                         onClick={onSubmit}>
-                    검색
+                    {SEARCH_BUTTON_TEXT}
                 </button>
             </form>
         </div>

@@ -31,7 +31,8 @@ const SearchResult = ({
                     />
                 })
             }
-            <Pagination pagination={pagination} onChange={onPaginationChange}/>
+            <Pagination pagination={pagination}
+                        onChange={onPaginationChange}/>
         </div>
     );
 };

@@ -8,6 +8,8 @@ const Pagination = ({
                         onChange,
                     }) => {
     const TAG = "[Pagination]";
+    const LEFT_ANGLE_BRACKET = "<";
+    const RIGHT_ANGLE_BRACKET = ">";
     console.log(TAG, 'init');
 
     const onPrevBtnClick = () => {
@@ -35,7 +37,8 @@ const Pagination = ({
 
     return (
         <div className="Pagination">
-            <button type="button" className="Prev-Btn" onClick={onPrevBtnClick} disabled={isFirstPage()}>&lt;</button>
+            <button type="button" className="Prev-Btn" onClick={onPrevBtnClick}
+                    disabled={isFirstPage()}>{LEFT_ANGLE_BRACKET}</button>
             {
                 PaginationUtils.getPrintedPages(pagination).map((page, index) => {
                     let pageBtnStyle = "Page";
@@ -46,7 +49,8 @@ const Pagination = ({
                                    value={page}>{page}</button>
                 })
             }
-            <button type="button" className="Next-Btn" onClick={onNextBtnClick} disabled={isLastPage()}>&gt;</button>
+            <button type="button" className="Next-Btn" onClick={onNextBtnClick}
+                    disabled={isLastPage()}>{RIGHT_ANGLE_BRACKET}</button>
         </div>
     );
 };

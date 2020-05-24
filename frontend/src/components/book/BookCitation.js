@@ -7,6 +7,8 @@ const BookCitation = ({
                           book,
                       }) => {
     const TAG = "[BookCitation]";
+    const MLA_LABEL = "MLA";
+    const COPY_BUTTON_TEXT = "복사";
     console.log(TAG, 'init');
 
     const [citation, setCitation] = useState({
@@ -25,7 +27,7 @@ const BookCitation = ({
 
     return (
         <div className="BookCitation">
-            <label className="BookCitation-label" form="MLA">MLA</label>
+            <label className="BookCitation-label" form="MLA">{MLA_LABEL}</label>
             <input className="BookCitation-Text"
                    type="text"
                    id="MLA"
@@ -35,7 +37,7 @@ const BookCitation = ({
                    aria-disabled/>
             {
                 document.queryCommandSupported('copy') &&
-                <button type="button" onClick={onCopy}>복사</button>
+                <button type="button" onClick={onCopy}>{COPY_BUTTON_TEXT}</button>
             }
         </div>
     );
