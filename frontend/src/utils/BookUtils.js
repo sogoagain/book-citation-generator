@@ -1,40 +1,39 @@
 const BookUtils = {};
 
 BookUtils.getFormattedWriters = (writers, mainCount) => {
-    const mainWriters = writers.slice(0, mainCount);
-    const exceededCount = writers.length - mainCount;
+  const mainWriters = writers.slice(0, mainCount);
+  const exceededCount = writers.length - mainCount;
 
-    const formattedWriters = mainWriters.join(", ");
+  const formattedWriters = mainWriters.join(', ');
 
-    if (exceededCount >= 1) {
-        return `${formattedWriters} 외 ${exceededCount}명`
-    }
+  if (exceededCount >= 1) {
+    return `${formattedWriters} 외 ${exceededCount}명`;
+  }
 
-    return formattedWriters;
+  return formattedWriters;
 };
 
 BookUtils.convertISO8601toYear = (iso8601) => {
-    const date = new Date(iso8601);
-    return date.getFullYear();
+  const date = new Date(iso8601);
+  return date.getFullYear();
 };
 
 BookUtils.getFormattedMLAStyleAuthors = (writers) => {
-    if (writers.length <= 2) {
-        return writers.join(", ");
-    }
+  if (writers.length <= 2) {
+    return writers.join(', ');
+  }
 
-    const firstWriter = writers[0];
-    return `${firstWriter} 외`;
+  const firstWriter = writers[0];
+  return `${firstWriter} 외`;
 };
 
 BookUtils.printMLAStyle = (book) => {
-    const writer = BookUtils.getFormattedMLAStyleAuthors(book.authors);
-    const title = book.title;
-    const publisher = book.publisher;
-    const dateYear = new Date(book.datetime).getFullYear();
+  const writer = BookUtils.getFormattedMLAStyleAuthors(book.authors);
+  const { title } = book;
+  const { publisher } = book;
+  const dateYear = new Date(book.datetime).getFullYear();
 
-    return `${writer}. ${title}. ${publisher}, ${dateYear}.`;
+  return `${writer}. ${title}. ${publisher}, ${dateYear}.`;
 };
 
 export default BookUtils;
-

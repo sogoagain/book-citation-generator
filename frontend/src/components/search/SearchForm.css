@@ -37,10 +37,6 @@
     right: 56px;
 }
 
-.SearchForm .btn-reset::before {
-    content: 'X'
-}
-
 .SearchForm .btn-submit {
     display: block;
     position: absolute;

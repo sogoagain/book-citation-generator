@@ -1,32 +1,32 @@
 import React from 'react';
 import './BookItem.css';
-import PropTypes from "prop-types";
-import BookDescription from "./BookDescription";
+import PropTypes from 'prop-types';
+import BookDescription from './BookDescription';
 
 const BookItem = ({
-                      book,
-                      onClick,
-                  }) => {
-    const TAG = "[BookItem]";
-    console.log(TAG, 'init');
+  book,
+  onClick,
+}) => {
+  const onBookClick = () => {
+    onClick(book);
+  };
 
-    const onBookClick = (e) => {
-        onClick(book);
-    };
-
-    return (
-        <div
-            className="BookItem"
-            onClick={onBookClick}
-        >
-            <BookDescription book={book}/>
-        </div>
-    );
+  return (
+    <div
+      className="BookItem"
+      onClick={onBookClick}
+      onKeyDown={onBookClick}
+      role="button"
+      tabIndex="0"
+    >
+      <BookDescription book={book} />
+    </div>
+  );
 };
 
 BookItem.propTypes = {
-    book: PropTypes.object.isRequired,
-    onClick: PropTypes.func.isRequired,
+  book: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default React.memo(BookItem);
