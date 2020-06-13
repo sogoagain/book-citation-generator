@@ -1,13 +1,12 @@
 import React, { useRef, useState } from 'react';
-import './BookCitation.css';
 import PropTypes from 'prop-types';
+import { AiOutlineCopy } from 'react-icons/ai';
 import BookUtils from '../../utils/BookUtils';
 
 const BookCitation = ({
   book,
 }) => {
   const MLA_LABEL = 'MLA';
-  const COPY_BUTTON_TEXT = '복사';
 
   const [citation] = useState({
     MLA: BookUtils.printMLAStyle(book),
@@ -25,15 +24,12 @@ const BookCitation = ({
   };
 
   return (
-    <div className="BookCitation">
-      <label
-        className="BookCitation-label"
-        htmlFor="MLA"
-      >
-        {MLA_LABEL}
-      </label>
+    <div className="input-group col-md-12">
+      <div className="input-group-prepend">
+        <span className="input-group-text">{MLA_LABEL}</span>
+      </div>
       <input
-        className="BookCitation-Text"
+        className="form-control"
         type="text"
         id="MLA"
         ref={inputRef}
@@ -42,10 +38,20 @@ const BookCitation = ({
         value={citation.MLA}
         aria-disabled
       />
-      {
-        document.queryCommandSupported('copy')
-                && <button type="button" onClick={onCopy}>{COPY_BUTTON_TEXT}</button>
-      }
+      <span className="input-group-append">
+        {
+          document.queryCommandSupported('copy')
+                && (
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={onCopy}
+                  >
+                    <AiOutlineCopy />
+                  </button>
+                )
+        }
+      </span>
     </div>
   );
 };

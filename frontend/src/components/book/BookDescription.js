@@ -8,38 +8,36 @@ import BookPublisher from './BookPublisher';
 const BookDescription = ({
   book,
 }) => (
-  <div className="BookDescription">
-    <div className="Book-Title">
-      <h2>{book.title}</h2>
+  <div className="card mb-3">
+    <div className="card-header">
+      <h5 className="text-center">{book.title}</h5>
     </div>
-    <div className="Flex-Container">
-      <div className="Flex-Thumbnail">
+    <div className="card-body d-flex justify-content-around align-items-center">
+      <div className="p-2 w-50">
         <BookThumbnail
           thumbnail={book.thumbnail}
           alt={book.title}
         />
       </div>
-      <div className="Flex-Description">
-        <div>
+      <div className="p-2 w-50">
+        <dl className="row">
           <BookWriters
+            title="저자"
             writers={book.authors}
           />
-        </div>
-        <div>
-          <BookWriters
-            writers={book.translators}
-          />
-        </div>
-        <div>
+          {book.translators.length === 0 ? null : (
+            <BookWriters
+              title="역자"
+              writers={book.translators}
+            />
+          )}
           <BookPublisher
             publisher={book.publisher}
           />
-        </div>
-        <div>
           <BookYear
             datetime={book.datetime}
           />
-        </div>
+        </dl>
       </div>
     </div>
   </div>

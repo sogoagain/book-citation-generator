@@ -1,56 +1,6 @@
-.SearchForm {
-    margin: 16px 0 16px 0;
-}
-
-.SearchForm .Form {
-    position: relative;
-    margin: 8px 0;
-    width: 100%;
-}
-
-.SearchForm .Search-Input-Wrap {
-    padding-right: 48px;
-}
-
-.SearchForm input[type=text] {
-    display: inline-block;
-    box-sizing: border-box;
-    width: 100%;
-    padding: 8px 16px;
-    font-size: 14px;
-    line-height: 1.5;
-    border: 1px solid rgb(224, 224, 224);
-    min-height: 40px;
-}
-
-.SearchForm .btn-reset {
-    border-radius: 50%;
-    background-color: #ccc;
-    color: white;
-    border: none;
-    padding: 2px 5px;
-}
-
-.SearchForm .btn-reset {
+.btn-reset {
     position: absolute;
-    top: 10px;
-    right: 56px;
-}
-
-.SearchForm .btn-submit {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 48px;
-    height: 40px;
-    background-color: rgb(52, 152, 219);
-    border: 1px solid rgb(52, 152, 219);
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.SearchForm .btn-submit:hover {
-    cursor: pointer;
+    top: 5px;
+    right: 64px;
+    z-index: 10;
 }

@@ -18,21 +18,26 @@ const SearchResult = ({
   };
 
   return (
-    <div className="SearchResult">
-      {
-        dataSource.map((book) => (
-          <BookItem
-            book={book}
-            key={book.isbn}
-            onClick={onBookClick}
-          />
-        ))
-      }
-      <Pagination
-        pagination={pagination}
-        onChange={onPaginationChange}
-      />
-    </div>
+    <>
+      <div className="container">
+        {
+          dataSource.map((book, index) => (
+            <BookItem
+              book={book}
+              key={book.isbn}
+              onClick={onBookClick}
+              tabIndex={index}
+            />
+          ))
+        }
+      </div>
+      <div className="container">
+        <Pagination
+          pagination={pagination}
+          onChange={onPaginationChange}
+        />
+      </div>
+    </>
   );
 };
 

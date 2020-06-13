@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './SearchForm.css';
 import PropTypes from 'prop-types';
+import { BsSearch } from 'react-icons/bs';
+import './SearchForm.css';
 
 const SearchForm = ({
   onSearch,
@@ -8,7 +9,6 @@ const SearchForm = ({
 }) => {
   const EMPTY_INPUT_FIELD_ERROR_MESSAGE = '도서 정보를 입력하세요.';
   const SEARCH_INPUT_PLACEHOLDER_MESSAGE = '어떤 책을 찾으세요?';
-  const SEARCH_BUTTON_TEXT = '검색';
 
   const [keyword, setKeyword] = useState('');
 
@@ -41,34 +41,38 @@ const SearchForm = ({
   }, [refreshCount]);
 
   return (
-    <div className="SearchForm">
-      <form className="Form">
-        <div className="Search-Input-Wrap">
+    <form className="form-horizontal">
+      <div className="form-group">
+        <div className="input-group col-md-12">
           <input
+            className="form-control"
             type="text"
             placeholder={SEARCH_INPUT_PLACEHOLDER_MESSAGE}
             onChange={onInputChange}
             value={keyword}
           />
+          {isVisibleResetBtn() ? (
+            <button
+              type="reset"
+              className="close btn-reset"
+              aria-label="Close"
+              onClick={onReset}
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          ) : null}
+          <span className="input-group-append">
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={onSubmit}
+            >
+              <BsSearch />
+            </button>
+          </span>
         </div>
-        {isVisibleResetBtn() ? (
-          <button
-            type="reset"
-            className="btn-reset"
-            onClick={onReset}
-          >
-            X
-          </button>
-        ) : null}
-        <button
-          type="submit"
-          className="btn-submit"
-          onClick={onSubmit}
-        >
-          {SEARCH_BUTTON_TEXT}
-        </button>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 };
 

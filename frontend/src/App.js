@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
-import './App.css';
-import { HeaderMode, MainHeader } from './components/header/MainHeader';
+import MainHeader from './components/header/MainHeader';
 import SearchComponent from './components/search/SearchComponent';
 import BookDetail from './components/book/BookDetail';
+
+const HeaderMode = {
+  NORMAL: {
+    marginTop: '160px',
+  },
+  MINIMUM: {
+    marginTop: '16px',
+  },
+};
 
 const App = () => {
   const MAIN_TITLE = '도서 출처 표기 생성기';
@@ -51,14 +59,19 @@ const App = () => {
   };
 
   return (
-    <div className="App">
-      <div className="Page-Container">
+    <>
+      <header
+        className="container"
+        style={layout.headerMode}
+      >
         <MainHeader
           text={MAIN_TITLE}
           mode={layout.headerMode}
           onClick={onHeaderClick}
         />
-        <section>
+      </header>
+      <section>
+        <>
           {
             layout.bookDetail.visible
               ? <BookDetail book={layout.bookDetail.book} />
@@ -70,9 +83,9 @@ const App = () => {
                 />
               )
           }
-        </section>
-      </div>
-    </div>
+        </>
+      </section>
+    </>
   );
 };
 

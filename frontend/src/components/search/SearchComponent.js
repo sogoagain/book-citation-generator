@@ -70,7 +70,7 @@ const SearchComponent = ({
   }, [refreshCount]);
 
   return (
-    <div className="SearchComponent">
+    <>
       <SearchForm
         onSearch={onSearch}
         refreshCount={refreshCount}
@@ -87,7 +87,7 @@ const SearchComponent = ({
           )
           : null
       }
-    </div>
+    </>
   );
 };
 

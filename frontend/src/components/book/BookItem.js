@@ -1,11 +1,11 @@
 import React from 'react';
-import './BookItem.css';
 import PropTypes from 'prop-types';
 import BookDescription from './BookDescription';
 
 const BookItem = ({
   book,
   onClick,
+  tabIndex,
 }) => {
   const onBookClick = () => {
     onClick(book);
@@ -13,11 +13,10 @@ const BookItem = ({
 
   return (
     <div
-      className="BookItem"
       onClick={onBookClick}
       onKeyDown={onBookClick}
       role="button"
-      tabIndex="0"
+      tabIndex={tabIndex}
     >
       <BookDescription book={book} />
     </div>

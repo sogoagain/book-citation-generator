@@ -1,5 +1,4 @@
 import React from 'react';
-import './Pagination.css';
 import PropTypes from 'prop-types';
 import PaginationUtils from '../../utils/PaginationUtils';
 
@@ -30,43 +29,53 @@ const Pagination = ({
   const isLastPage = () => PaginationUtils.isLastPage(pagination);
 
   return (
-    <div className="Pagination">
-      <button
-        type="button"
-        className="Prev-Btn"
-        onClick={onPrevBtnClick}
-        disabled={isFirstPage()}
-      >
-        {LEFT_ANGLE_BRACKET}
-      </button>
-      {
-        PaginationUtils.getPrintedPages(pagination).map((page) => {
-          let pageBtnStyle = 'Page';
-          if (pagination.page === page) {
-            pageBtnStyle = 'Selected-Page';
-          }
-          return (
-            <button
-              type="button"
-              className={pageBtnStyle}
-              key={page}
-              onClick={onPageClick}
-              value={page}
-            >
-              {page}
-            </button>
-          );
-        })
-      }
-      <button
-        type="button"
-        className="Next-Btn"
-        onClick={onNextBtnClick}
-        disabled={isLastPage()}
-      >
-        {RIGHT_ANGLE_BRACKET}
-      </button>
-    </div>
+    <nav aria-label="Page navigation example">
+      <ul className="pagination justify-content-center">
+        <li className={isFirstPage() ? 'page-item disabled' : 'page-item'}>
+          <button
+            type="button"
+            className="page-link"
+            onClick={onPrevBtnClick}
+            disabled={isFirstPage()}
+          >
+            {LEFT_ANGLE_BRACKET}
+          </button>
+        </li>
+        {
+          PaginationUtils.getPrintedPages(pagination).map((page) => {
+            let pageBtnStyle = 'page-item';
+            if (pagination.page === page) {
+              pageBtnStyle = 'page-item active';
+            }
+            return (
+              <li
+                className={pageBtnStyle}
+                key={page}
+              >
+                <button
+                  type="button"
+                  className="page-link"
+                  onClick={onPageClick}
+                  value={page}
+                >
+                  {page}
+                </button>
+              </li>
+            );
+          })
+        }
+        <li className={isLastPage() ? 'page-item disabled' : 'page-item'}>
+          <button
+            type="button"
+            className="page-link"
+            onClick={onNextBtnClick}
+            disabled={isLastPage()}
+          >
+            {RIGHT_ANGLE_BRACKET}
+          </button>
+        </li>
+      </ul>
+    </nav>
   );
 };
 

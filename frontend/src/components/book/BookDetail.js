@@ -1,5 +1,4 @@
 import React from 'react';
-import './BookDetail.css';
 import PropTypes from 'prop-types';
 import BookDescription from './BookDescription';
 import BookCitation from './BookCitation';
@@ -7,14 +6,18 @@ import BookCitation from './BookCitation';
 const BookDetail = ({
   book,
 }) => (
-  <div className="BookDetail">
-    <BookDescription
-      book={book}
-    />
-    <BookCitation
-      book={book}
-    />
-  </div>
+  <>
+    <div className="container">
+      <BookDescription
+        book={book}
+      />
+    </div>
+    <div className="container">
+      <BookCitation
+        book={book}
+      />
+    </div>
+  </>
 );
 
 BookDetail.propTypes = {
