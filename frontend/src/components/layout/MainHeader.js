@@ -11,7 +11,7 @@ const MainHeader = ({
 
   return (
     <div
-      className="row mx-auto bg-light mb-3"
+      className="row bg-light mb-3 rounded"
       onClick={onHeaderClick}
       onKeyDown={onHeaderClick}
       role="button"

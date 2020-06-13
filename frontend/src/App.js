@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import MainHeader from './components/header/MainHeader';
+import MainHeader from './components/layout/MainHeader';
 import SearchComponent from './components/search/SearchComponent';
 import BookDetail from './components/book/BookDetail';
+import Footer from './components/layout/Footer';
 
 const HeaderMode = {
   NORMAL: {
@@ -85,6 +86,7 @@ const App = () => {
           }
         </>
       </section>
+      <Footer />
     </>
   );
 };
