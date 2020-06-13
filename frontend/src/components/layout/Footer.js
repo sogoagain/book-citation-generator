@@ -1,14 +1,16 @@
 import React from 'react';
 
 const Footer = () => (
-  <footer>
-    <div className="container bg-light py-2 text-center rounded">
-      <p className="text-muted my-1">
+  <footer
+    className="mt-3 bg-light fixed-bottom"
+  >
+    <div className="container py-0 text-center rounded">
+      <p className="text-muted my-0 text-truncate">
         Developed and designed by
         <a className="badge badge-light" href="https://github.com/sogoagain/">sogoagain</a>
         .
       </p>
-      <p className="text-muted">
+      <p className="text-muted my-0 text-truncate">
         Powered by
         <a className="badge badge-light" href="https://www.daum.net/">kakao</a>
         ,
