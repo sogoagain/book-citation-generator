@@ -9,6 +9,7 @@ provider:
   region: ap-northeast-2
   stackName: book-citation-api
   apiName: book-citation-api
+  memorySize: 128
   environment:
     API_KAKAO: ${self:custom.env.api.api_kakao}
     KEY_KAKAO: ${self:custom.env.api.key_kakao}
