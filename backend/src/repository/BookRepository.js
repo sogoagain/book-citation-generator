@@ -14,6 +14,4 @@ const findByKeywordAndPagination = async (keyword, pagination) => {
   return books;
 };
 
-module.exports = {
-  findByKeywordAndPagination,
-};
+module.exports = { findByKeywordAndPagination };

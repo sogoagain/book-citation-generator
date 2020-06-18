@@ -19,7 +19,7 @@ provider:
 functions:
   getBooks:
     name: book-citation-api-getBooks
-    handler: src/api/handler.getBooks
+    handler: src/handler.getBooks
     description: get books by keyword and page
     events:
       - http:
