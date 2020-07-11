@@ -18,8 +18,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "react-scripts test --coverage",
     "eject": "react-scripts eject",
-    "lint": "eslint --ext .js,.jsx src"
+    "lint": "eslint --ext .js src"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -42,6 +43,16 @@
     "eslint-plugin-import": "^2.21.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-react-hooks": "^2.5.0"
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "jest-plugin-context": "^2.9.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js}",
+      "!/node_modules/",
+      "!src/index.js",
+      "!src/serviceWorker.js",
+      "!src/setupTests.js"
+    ]
   }
 }

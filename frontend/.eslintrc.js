@@ -13,6 +13,7 @@ module.exports = {
       SharedArrayBuffer: 'readonly',
       Feature: 'readonly',
       Scenario: 'readonly',
+      context: 'readonly',
     },
     parserOptions: {
       ecmaFeatures: {
