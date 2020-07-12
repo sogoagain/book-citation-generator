@@ -14,7 +14,7 @@ const MainHeader = ({
       className="row bg-light py-2 mb-3 rounded"
       onClick={onHeaderClick}
       onKeyDown={onHeaderClick}
-      role="button"
+      role="link"
       tabIndex="0"
     >
       <div className="col-md-12">

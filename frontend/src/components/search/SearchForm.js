@@ -67,7 +67,8 @@ const SearchForm = ({
               className="btn btn-primary"
               onClick={onSubmit}
             >
-              <BsSearch />
+              <span className="sr-only">검색</span>
+              <BsSearch aria-label="Search for books" />
             </button>
           </span>
         </div>
