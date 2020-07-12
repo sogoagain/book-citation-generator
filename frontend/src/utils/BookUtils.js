@@ -13,7 +13,7 @@ BookUtils.getFormattedWriters = (writers, mainCount) => {
   return formattedWriters;
 };
 
-BookUtils.convertISO8601toYear = (iso8601) => {
+BookUtils.extractYearFromISO08601 = (iso8601) => {
   const date = new Date(iso8601);
   return date.getFullYear();
 };
@@ -27,7 +27,7 @@ BookUtils.getFormattedMLAStyleAuthors = (writers) => {
   return `${firstWriter} 외`;
 };
 
-BookUtils.printMLAStyle = (book) => {
+BookUtils.getMLACitationNotation = (book) => {
   const writer = BookUtils.getFormattedMLAStyleAuthors(book.authors);
   const { title } = book;
   const { publisher } = book;

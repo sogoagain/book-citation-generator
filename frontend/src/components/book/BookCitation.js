@@ -9,7 +9,7 @@ const BookCitation = ({
   const MLA_LABEL = 'MLA';
 
   const [citation] = useState({
-    MLA: BookUtils.printMLAStyle(book),
+    MLA: BookUtils.getMLACitationNotation(book),
   });
   const inputRef = useRef(null);
 
