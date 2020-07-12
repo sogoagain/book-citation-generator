@@ -42,7 +42,7 @@ const Pagination = ({
           </button>
         </li>
         {
-          PaginationUtils.getPrintedPages(pagination).map((page) => {
+          PaginationUtils.getSelectablePages(pagination).map((page) => {
             let pageBtnStyle = 'page-item';
             if (pagination.page === page) {
               pageBtnStyle = 'page-item active';

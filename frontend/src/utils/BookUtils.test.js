@@ -1,7 +1,7 @@
 import BookUtils from './BookUtils';
 
 describe('BookUtils', () => {
-  describe('get formatted writers', () => {
+  describe('getFormattedWriters', () => {
     const mainWritersCount = 1;
     let writers;
 
@@ -30,7 +30,7 @@ describe('BookUtils', () => {
     });
   });
 
-  describe('extract the year from the ISO08601', () => {
+  describe('extractYearFromISO08601', () => {
     it('returns year', () => {
       const iso8601 = '2016-02-28T00:00:00.000+09:00';
 
@@ -40,7 +40,7 @@ describe('BookUtils', () => {
     });
   });
 
-  describe('get MLA Citation Notation', () => {
+  describe('getMLACitationNotation', () => {
     let book;
 
     context('with 1 authors', () => {

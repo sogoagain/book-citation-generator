@@ -1,7 +1,7 @@
 const PaginationUtils = {
-  getTotalPages: (pagination) => Math.ceil(pagination.total / pagination.size),
-  getPrintedPageIndex(pagination) {
-    const totalPage = this.getTotalPages(pagination);
+  getTotalPages: ({ total, size }) => Math.ceil(total / size),
+  getSelectablePageRange: ({ total, size, page }) => {
+    const totalPage = PaginationUtils.getTotalPages({ total, size });
 
     if (totalPage < 5) {
       return {
@@ -10,14 +10,14 @@ const PaginationUtils = {
       };
     }
 
-    if (pagination.page <= 2) {
+    if (page <= 2) {
       return {
         start: 1,
         end: 5,
       };
     }
 
-    if ((totalPage - pagination.page) < 2) {
+    if ((totalPage - page) < 2) {
       return {
         start: totalPage - 4,
         end: totalPage,
@@ -25,17 +25,17 @@ const PaginationUtils = {
     }
 
     return {
-      start: pagination.page - 2,
-      end: pagination.page + 2,
+      start: page - 2,
+      end: page + 2,
     };
   },
-  getPrintedPages(pagination) {
-    const printedPageIndex = this.getPrintedPageIndex(pagination);
-    const size = printedPageIndex.end - printedPageIndex.start + 1;
-    return [...Array(size).keys()].map((i) => i + printedPageIndex.start);
+  getSelectablePages: (pagination) => {
+    const { start, end } = PaginationUtils.getSelectablePageRange(pagination);
+    const size = end - start + 1;
+    return [...Array(size).keys()].map((i) => i + start);
   },
   isFirstPage: (pagination) => pagination.page === 1,
-  isLastPage(pagination) { return pagination.page === this.getTotalPages(pagination); },
+  isLastPage: (pagination) => pagination.page === PaginationUtils.getTotalPages(pagination),
 };
 
 export default PaginationUtils;

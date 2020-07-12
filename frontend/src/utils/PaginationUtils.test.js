@@ -1,175 +1,202 @@
 import PaginationUtils from './PaginationUtils';
 
-test('getTotalPages', () => {
-  // given
-  const pagination = {
-    page: 3,
-    size: 5,
-    total: 123,
-  };
+describe('PaginationUtils', () => {
+  describe('getTotalPages', () => {
+    it('returns total page', () => {
+      const pagination = {
+        page: 3,
+        size: 5,
+        total: 123,
+      };
 
-  // when
-  const totalPages = PaginationUtils.getTotalPages(pagination);
+      const totalPages = PaginationUtils.getTotalPages(pagination);
 
-  // then
-  expect(totalPages).toBe(25);
-});
-
-test('getPrintedPageIndexWithLeftBound', () => {
-  // given
-  const pagination = {
-    page: 3,
-    size: 5,
-    total: 123,
-  };
-
-  // when
-  const printedPageIndex = PaginationUtils.getPrintedPageIndex(pagination);
-
-  // then
-  expect(printedPageIndex).toStrictEqual({
-    start: 1,
-    end: 5,
+      expect(totalPages).toBe(25);
+    });
   });
-});
 
-test('getPrintedPageIndexWithNormal', () => {
-  // given
-  const pagination = {
-    page: 12,
-    size: 5,
-    total: 123,
-  };
+  describe('getSelectablePageRange', () => {
+    let pagination;
 
-  // when
-  const printedPageIndex = PaginationUtils.getPrintedPageIndex(pagination);
+    context('with left bound', () => {
+      beforeEach(() => {
+        pagination = {
+          page: 3,
+          size: 5,
+          total: 123,
+        };
+      });
 
-  // then
-  expect(printedPageIndex).toStrictEqual({
-    start: 10,
-    end: 14,
+      it('returns the range starting with the first page', () => {
+        const selectablePageRange = PaginationUtils.getSelectablePageRange(pagination);
+
+        expect(selectablePageRange).toStrictEqual({
+          start: 1,
+          end: 5,
+        });
+      });
+    });
+
+    context('with middle bound', () => {
+      beforeEach(() => {
+        pagination = {
+          page: 12,
+          size: 5,
+          total: 123,
+        };
+      });
+
+      it('returns the range starting with the middle page', () => {
+        const selectablePageRange = PaginationUtils.getSelectablePageRange(pagination);
+
+        expect(selectablePageRange).toStrictEqual({
+          start: 10,
+          end: 14,
+        });
+      });
+    });
+
+    context('with right bound', () => {
+      beforeEach(() => {
+        pagination = {
+          page: 24,
+          size: 5,
+          total: 123,
+        };
+      });
+
+      it('returns th range ending with the last page', () => {
+        const selectablePageRange = PaginationUtils.getSelectablePageRange(pagination);
+
+        expect(selectablePageRange).toStrictEqual({
+          start: 21,
+          end: 25,
+        });
+      });
+    });
   });
-});
 
-test('getPrintedPageIndexWithRightBound', () => {
-  // given
-  const pagination = {
-    page: 24,
-    size: 5,
-    total: 123,
-  };
+  describe('getSelectablePages', () => {
+    let pagination;
 
-  // when
-  const printedPageIndex = PaginationUtils.getPrintedPageIndex(pagination);
+    context('when the middle page is selected', () => {
+      beforeEach(() => {
+        pagination = {
+          page: 12,
+          size: 5,
+          total: 123,
+        };
+      });
 
-  // then
-  expect(printedPageIndex).toStrictEqual({
-    start: 21,
-    end: 25,
+      it('returns the pages starting with the middle page', () => {
+        const printedPages = PaginationUtils.getSelectablePages(pagination);
+
+        expect(printedPages).toStrictEqual([10, 11, 12, 13, 14]);
+      });
+    });
+
+    context('when the total number of pages is less than 5', () => {
+      beforeEach(() => {
+        pagination = {
+          page: 1,
+          size: 5,
+          total: 12,
+        };
+      });
+
+      it('returns the total number of pages', () => {
+        const printedPages = PaginationUtils.getSelectablePages(pagination);
+
+        expect(printedPages).toStrictEqual([1, 2, 3]);
+      });
+    });
+
+    context('when the selected page is less than 3', () => {
+      beforeEach(() => {
+        pagination = {
+          page: 2,
+          size: 5,
+          total: 762,
+        };
+      });
+
+      it('returns pages 1 through 5', () => {
+        const printedPages = PaginationUtils.getSelectablePages(pagination);
+
+        expect(printedPages).toStrictEqual([1, 2, 3, 4, 5]);
+      });
+    });
   });
-});
 
-test('getPrintedPages', () => {
-  // given
-  const pagination = {
-    page: 12,
-    size: 5,
-    total: 123,
-  };
+  describe('isFirstPage', () => {
+    let pagination;
 
-  // when
-  const printedPages = PaginationUtils.getPrintedPages(pagination);
+    context('with first page', () => {
+      beforeEach(() => {
+        pagination = {
+          page: 1,
+          size: 5,
+          total: 762,
+        };
+      });
 
-  // then
-  expect(printedPages).toStrictEqual([10, 11, 12, 13, 14]);
-});
+      it('returns true', () => {
+        const isFirstPage = PaginationUtils.isFirstPage(pagination);
 
-test('getPrintedPagesWithLess5', () => {
-  // given
-  const pagination = {
-    page: 1,
-    size: 5,
-    total: 12,
-  };
+        expect(isFirstPage).toBeTruthy();
+      });
+    });
 
-  // when
-  const printedPages = PaginationUtils.getPrintedPages(pagination);
+    context('with not first page', () => {
+      beforeEach(() => {
+        pagination = {
+          page: 2,
+          size: 5,
+          total: 762,
+        };
+      });
 
-  // then
-  expect(printedPages).toStrictEqual([1, 2, 3]);
-});
+      it('returns false', () => {
+        const isFirstPage = PaginationUtils.isFirstPage(pagination);
 
-test('getPrintedPagesWithPage2', () => {
-  // given
-  const pagination = {
-    page: 2,
-    size: 5,
-    total: 762,
-  };
+        expect(isFirstPage).toBeFalsy();
+      });
+    });
+  });
 
-  // when
-  const printedPages = PaginationUtils.getPrintedPages(pagination);
+  describe('isLastPage', () => {
+    let pagination;
 
-  // then
-  expect(printedPages).toStrictEqual([1, 2, 3, 4, 5]);
-});
+    context('with last page', () => {
+      beforeEach(() => {
+        pagination = {
+          page: 2,
+          size: 5,
+          total: 10,
+        };
+      });
 
-test('isFirstPage', () => {
-  // given
-  const pagination = {
-    page: 1,
-    size: 5,
-    total: 762,
-  };
+      it('returns true', () => {
+        const isFirstPage = PaginationUtils.isLastPage(pagination);
 
-  // when
-  const isFirstPage = PaginationUtils.isFirstPage(pagination);
+        expect(isFirstPage).toBeTruthy();
+      });
+    });
 
-  // then
-  expect(isFirstPage).toBeTruthy();
-});
+    context('with not last page', () => {
+      beforeEach(() => {
+        pagination = {
+          page: 1,
+          size: 5,
+          total: 10,
+        };
+      });
 
-test('isFirstPageWithWrong', () => {
-  // given
-  const pagination = {
-    page: 2,
-    size: 5,
-    total: 762,
-  };
+      it('returns false', () => {
+        const isFirstPage = PaginationUtils.isLastPage(pagination);
 
-  // when
-  const isFirstPage = PaginationUtils.isFirstPage(pagination);
-
-  // then
-  expect(isFirstPage).toBeFalsy();
-});
-
-test('isLastPage', () => {
-  // given
-  const pagination = {
-    page: 2,
-    size: 5,
-    total: 10,
-  };
-
-  // when
-  const isLastPage = PaginationUtils.isLastPage(pagination);
-
-  // then
-  expect(isLastPage).toBeTruthy();
-});
-
-test('isLastPageWithWrong', () => {
-  // given
-  const pagination = {
-    page: 1,
-    size: 5,
-    total: 10,
-  };
-
-  // when
-  const isLastPage = PaginationUtils.isLastPage(pagination);
-
-  // then
-  expect(isLastPage).toBeFalsy();
+        expect(isFirstPage).toBeFalsy();
+      });
+    });
+  });
 });
