@@ -1,39 +1,28 @@
-const BookUtils = {};
+const BookUtils = {
+  getFormattedWriters: (writers, mainWritersCount) => {
+    const mainWriters = writers.slice(0, mainWritersCount).join(', ');
+    const exceededCount = writers.length - mainWritersCount;
 
-BookUtils.getFormattedWriters = (writers, mainCount) => {
-  const mainWriters = writers.slice(0, mainCount);
-  const exceededCount = writers.length - mainCount;
+    if (exceededCount >= 1) {
+      return `${mainWriters} 외 ${exceededCount}명`;
+    }
 
-  const formattedWriters = mainWriters.join(', ');
+    return mainWriters;
+  },
 
-  if (exceededCount >= 1) {
-    return `${formattedWriters} 외 ${exceededCount}명`;
-  }
+  extractYearFromISO08601: (iso8601) => new Date(iso8601).getFullYear(),
 
-  return formattedWriters;
-};
+  getFormattedMLAStyleAuthors: (writers) => {
+    if (writers.length <= 2) {
+      return writers.join(', ');
+    }
 
-BookUtils.extractYearFromISO08601 = (iso8601) => {
-  const date = new Date(iso8601);
-  return date.getFullYear();
-};
+    return `${writers[0]} 외`;
+  },
 
-BookUtils.getFormattedMLAStyleAuthors = (writers) => {
-  if (writers.length <= 2) {
-    return writers.join(', ');
-  }
-
-  const firstWriter = writers[0];
-  return `${firstWriter} 외`;
-};
-
-BookUtils.getMLACitationNotation = (book) => {
-  const writer = BookUtils.getFormattedMLAStyleAuthors(book.authors);
-  const { title } = book;
-  const { publisher } = book;
-  const dateYear = new Date(book.datetime).getFullYear();
-
-  return `${writer}. ${title}. ${publisher}, ${dateYear}.`;
+  getMLACitationNotation: ({
+    authors, title, publisher, datetime,
+  }) => `${BookUtils.getFormattedMLAStyleAuthors(authors)}. ${title}. ${publisher}, ${BookUtils.extractYearFromISO08601(datetime)}.`,
 };
 
 export default BookUtils;
