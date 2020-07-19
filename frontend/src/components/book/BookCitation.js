@@ -1,63 +1,40 @@
-import React, { useRef, useState } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+
 import { AiOutlineCopy } from 'react-icons/ai';
-import BookUtils from '../../utils/BookUtils';
 
 const BookCitation = ({
-  book,
-}) => {
-  const MLA_LABEL = 'MLA';
-
-  const [citation] = useState({
-    MLA: BookUtils.getMLACitationNotation(book),
-  });
-  const inputRef = useRef(null);
-
-  const onCopy = (e) => {
-    inputRef.current.focus();
-    inputRef.current.select();
-    inputRef.current.setSelectionRange(0, 99999);
-    document.execCommand('copy');
-    e.target.focus();
-    // eslint-disable-next-line no-alert
-    alert('출처 표기법을 복사했습니다.');
-  };
-
-  return (
+  label, citation, onCopy, copyable, inputRef,
+}) => (
+  <div className="container">
     <div className="input-group col-md-12">
       <div className="input-group-prepend">
-        <span className="input-group-text">{MLA_LABEL}</span>
+        <label className="input-group-text" htmlFor={`book-citation-${label}`}>{label}</label>
       </div>
       <input
         className="form-control"
         type="text"
-        id="MLA"
+        id={`book-citation-${label}`}
         ref={inputRef}
-        onChange={() => {
-        }}
-        value={citation.MLA}
+        value={citation}
+        onChange={() => {}}
         aria-disabled
       />
       <span className="input-group-append">
         {
-          document.queryCommandSupported('copy')
-                && (
-                  <button
-                    type="button"
-                    className="btn btn-primary"
-                    onClick={onCopy}
-                  >
-                    <AiOutlineCopy />
-                  </button>
-                )
+          copyable && (
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={onCopy}
+            >
+              <AiOutlineCopy />
+              <span className="sr-only">복사</span>
+            </button>
+          )
         }
       </span>
     </div>
-  );
-};
-
-BookCitation.propTypes = {
-  book: PropTypes.oneOfType([PropTypes.object]).isRequired,
-};
+  </div>
+);
 
 export default BookCitation;
