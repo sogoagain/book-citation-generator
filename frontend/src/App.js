@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import MainHeader from './components/layout/MainHeader';
-import SearchComponent from './components/search/SearchComponent';
-import BookDetail from './components/book/BookDetail';
+
+import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
+import SearchComponent from './components/search/SearchComponent';
+import BookDetailContainer from './containers/BookDetailContainer';
 
 const HeaderMode = {
   NORMAL: {
@@ -65,17 +66,15 @@ const App = () => {
         className="container"
         style={layout.headerMode}
       >
-        <MainHeader
+        <Header
           text={MAIN_TITLE}
-          mode={layout.headerMode}
-          onClick={onHeaderClick}
         />
       </header>
       <section>
         <>
           {
             layout.bookDetail.visible
-              ? <BookDetail book={layout.bookDetail.book} />
+              ? <BookDetailContainer />
               : (
                 <SearchComponent
                   refreshCount={refreshCount}
