@@ -22,7 +22,7 @@ describe('books reducer', () => {
   };
 
   describe('setItems', () => {
-    it('changes books', () => {
+    it('changes items', () => {
       const previousState = initialState;
 
       const state = booksReducer(previousState, setItems(BOOKS));

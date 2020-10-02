@@ -40,14 +40,14 @@ describe('App', () => {
   it('renders title', () => {
     renderApp('/');
 
-    expect(screen.getByText(/도서 출처 표기법/)).toBeInTheDocument();
+    expect(screen.getByText(/도서 출처 표기 생성기/)).toBeInTheDocument();
   });
 
   it('renders links', () => {
     renderApp('/');
 
     expect(
-      screen.getByRole('link', { name: /도서 출처 표기법/ }),
+      screen.getByRole('link', { name: /도서 출처 표기 생성기/ }),
     ).toBeInTheDocument();
   });
 
