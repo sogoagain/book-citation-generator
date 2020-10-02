@@ -1,4 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Pagination } from 'antd';
+import { batch } from 'react-redux';
+
+import { BooksResponse, fetchBooks } from '../services/api';
+import { ThunkType } from '../store';
 
 export type Book = {
   authors: Array<string>;
@@ -15,19 +20,94 @@ export type Book = {
   url: string;
 };
 
-export type BooksState = Array<Book>;
+export type Pagination = {
+  page: number;
+  size: number;
+  total?: number;
+};
+
+export type BooksState = {
+  items: Array<Book>;
+  keyword: string;
+  pagination: Pagination;
+  loading: boolean;
+};
 
 const { actions, reducer } = createSlice({
   name: 'books',
-  initialState: [] as BooksState,
+  initialState: {
+    items: [],
+    keyword: '',
+    pagination: {
+      page: 1,
+      size: 5,
+      total: 0,
+    },
+    loading: false,
+  } as BooksState,
   reducers: {
-    setBooks: (
-      _state: BooksState,
-      { payload: books }: PayloadAction<Array<Book>>,
-    ) => [...books],
+    setItems: (
+      state: BooksState,
+      { payload: items }: PayloadAction<Array<Book>>,
+    ) => ({
+      ...state,
+      items: [...items],
+    }),
+
+    setKeyword: (
+      state: BooksState,
+      { payload: keyword }: PayloadAction<string>,
+    ) => ({
+      ...state,
+      keyword,
+    }),
+
+    setPagination: (
+      state: BooksState,
+      { payload: pagination }: PayloadAction<Pagination>,
+    ) => ({
+      ...state,
+      pagination: {
+        ...pagination,
+      },
+    }),
+
+    setLoading: (
+      state: BooksState,
+      { payload: loading }: PayloadAction<boolean>,
+    ) => ({
+      ...state,
+      loading,
+    }),
   },
 });
 
-export const { setBooks } = actions;
+export const { setItems, setKeyword, setPagination, setLoading } = actions;
+
+export function loadBooks(
+  keyword: string,
+  { page, size }: Pagination,
+): ThunkType {
+  return async (dispatch) => {
+    batch(() => {
+      dispatch(setLoading(true));
+      dispatch(setKeyword(keyword));
+    });
+
+    const response: BooksResponse = await fetchBooks({ keyword, page, size });
+
+    const pagination: Pagination = {
+      page,
+      size,
+      total: response.meta.total_count,
+    };
+
+    batch(() => {
+      dispatch(setItems(response.documents));
+      dispatch(setPagination(pagination));
+      dispatch(setLoading(false));
+    });
+  };
+}
 
 export default reducer;
