@@ -1,0 +1,25 @@
+## Mac OS x
+.DS_*
+
+## IntelliJ
+.idea
+
+## VS Code
+.vscode
+
+## CodeceptJS
+output
+
+## Node.js
+node_modules
+npm-debug.log
+
+## Jest
+coverage
+
+## Build
+dist
+build
+
+## Env
+.env
