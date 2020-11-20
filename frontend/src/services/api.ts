@@ -1,4 +1,5 @@
 import { Book } from '../features/booksSlice';
+import book from '../__fixtures__/book';
 
 export interface BooksParams {
   keyword: string;
@@ -22,10 +23,14 @@ export async function fetchBooks({
   page = 1,
   size = 5,
 }: BooksParams): Promise<BooksResponse> {
-  const { log } = console;
-  const url = `http://localhost:4000/service/books?keyword=${keyword}&page=${page}&size=${size}`;
+  const url = `${process.env.API_SERVER_URL}/books`;
+  const params = new URLSearchParams({
+    keyword,
+    page,
+    size,
+  } as any);
 
-  return fetch(url)
-    .then((response) => response.json())
-    .catch((err) => log(err));
+  const response = await fetch(`${url}?${params}`);
+  const books = response.json();
+  return books;
 }

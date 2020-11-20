@@ -8,7 +8,7 @@ import { useTypedSelector, useTypedDispatch } from './store';
 
 import App from './App';
 
-import BOOKS from './__fixtures__/books';
+import books from './__fixtures__/books';
 
 jest.mock('./store');
 
@@ -28,7 +28,7 @@ describe('App', () => {
   mockUseDispatch.mockImplementation(() => dispatch);
   mockUseSelector.mockImplementation((selector) =>
     selector({
-      books: BOOKS,
+      books: books,
       keyword: '',
     }),
   );
