@@ -4,8 +4,8 @@
   "description": "Book citation generator",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production --config webpack.config.js",
-    "start": "webpack-dev-server",
+    "build": "webpack --mode production --config webpack.prod.config.js",
+    "start": "webpack-dev-server --mode development --config webpack.dev.config.js",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch-all",
