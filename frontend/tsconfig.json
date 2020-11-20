@@ -14,6 +14,11 @@
     "strict": true,
     "jsx": "react"
   },
-  "include": ["src/**/*"],
+  "include": [
+    "src/**/*",
+    "__mocks__/fileMock.ts",
+    "__mocks__/styleMock.ts",
+    "__mocks__/fileMock.ts"
+  ],
   "exclude": ["node_modules", "dist"]
 }
