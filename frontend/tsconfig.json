@@ -16,9 +16,9 @@
   },
   "include": [
     "src/**/*",
-    "__mocks__/fileMock.ts",
-    "__mocks__/styleMock.ts",
-    "__mocks__/fileMock.ts"
+    "__mocks__/file.mock.ts",
+    "__mocks__/style.mock.ts",
+    "__mocks__/matchMedia.mock.ts"
   ],
   "exclude": ["node_modules", "dist"]
 }

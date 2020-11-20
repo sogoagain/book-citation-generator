@@ -1,8 +1,8 @@
 module.exports = {
   setupFilesAfterEnv: [
-    "given2/setup",
-    "jest-plugin-context/setup",
-    "./jest.setup",
+    'given2/setup',
+    'jest-plugin-context/setup',
+    './jest.setup',
   ],
   coverageThreshold: {
     global: {
@@ -11,5 +11,10 @@ module.exports = {
       lines: 100,
       statements: 100,
     },
+  },
+  moduleNameMapper: {
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+      '<rootDir>/__mocks__/file.mock.ts',
+    '\\.(css|less)$': '<rootDir>/__mocks__/style.mock.ts',
   },
 };
