@@ -363,7 +363,6 @@ npm-debug.log
 yarn-error.log
 
 # End of https://www.gitignore.io/api/vue,node,vuejs,macos,intellij
-package-lock.json
 manifest.json
 robots.txt
 frontend/.idea/sonarlint
@@ -374,3 +373,4 @@ env.json
 backend/.webpack
 .env.production
 .env.development
+/.idea/
