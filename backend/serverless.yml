@@ -11,10 +11,13 @@ provider:
   memorySize: 512
   timeout: 30
   architecture: arm64
+  endpointType: REGIONAL
+
   environment:
     KAKAO_API_KEY: ${env:KAKAO_API_KEY}
     FRONT_DOMAIN: ${env:FRONT_DOMAIN}
     NODE_ENV: ${self:provider.stage}
+
   httpApi:
     cors:
       allowedOrigins:
@@ -23,6 +26,8 @@ provider:
         - Content-Type
       allowedMethods:
         - GET
+        - POST
+        - OPTIONS
 
 functions:
   getBooks:
@@ -39,10 +44,11 @@ custom:
     sourcemap: false
     target: node20
     platform: node
-    format: esm
-    mainFields: [module, main]
+    format: cjs
+    mainFields: [main, module]
     exclude:
       - aws-sdk
+
   serverless-offline:
     httpPort: 4000
     lambdaPort: 3002
