@@ -1,6 +1,5 @@
 app: book-citation
 service: book-citation-api
-org: sogoagain
 
 provider:
   name: aws
