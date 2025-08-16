@@ -4,51 +4,52 @@ org: sogoagain
 
 provider:
   name: aws
-  runtime: nodejs12.x
-  stage: 'service'
+  runtime: nodejs20.x
+  stage: ${opt:stage, 'dev'}
   region: ap-northeast-2
-  stackName: book-citation-api
-  apiName: book-citation-api
-  memorySize: 128
+  stackName: book-citation-api-${self:provider.stage}
+  apiName: book-citation-api-${self:provider.stage}
+  memorySize: 512
+  timeout: 30
+  architecture: arm64
   environment:
-    API_KAKAO: ${self:custom.env.api.api_kakao}
-    KEY_KAKAO: ${self:custom.env.api.key_kakao}
-    FRONT_DOMAIN: ${self:custom.env.api.front_domain}
-    MODE: 'service'
+    KAKAO_API_KEY: ${env:KAKAO_API_KEY}
+    FRONT_DOMAIN: ${env:FRONT_DOMAIN}
+    NODE_ENV: ${self:provider.stage}
+  httpApi:
+    cors:
+      allowedOrigins:
+        - ${env:FRONT_DOMAIN}
+      allowedHeaders:
+        - Content-Type
+      allowedMethods:
+        - GET
 
 functions:
   getBooks:
-    name: book-citation-api-getBooks
-    handler: src/handler.getBooks
-    description: get books by keyword and page
+    handler: src/handler.default
     events:
-      - http:
-          path: books
+      - httpApi:
+          path: /books
           method: get
-          cors: true
 
 custom:
-  stages:
-    - service
-  env: ${file(./config/env.json)}
-  webpack:
-    webpackConfig: ./webpack.config.js
-    includeModules: true
-  customDomain:
-    domainName: ${self:custom.env.domain.name}
-    stage: ${opt:alias,'dev'}
-    basePath: 'api'
-    certificateName: ${self:custom.env.domain.cert}
-    createRoute53Record: true
-    certificateArn: ${self:custom.env.domain.certificateArn}
+  esbuild:
+    bundle: true
+    minify: true
+    sourcemap: false
+    target: node20
+    platform: node
+    format: esm
+    mainFields: [module, main]
+    exclude:
+      - aws-sdk
   serverless-offline:
     httpPort: 4000
+    lambdaPort: 3002
 
-package:
-  individually: true
+useDotenv: true
 
 plugins:
+  - serverless-esbuild
   - serverless-offline
-  - serverless-aws-alias
-  - serverless-webpack
-  - serverless-domain-manager

@@ -1,1 +1,3 @@
-module.exports = require('./interfaces/BookController');
+import getBooks from './interfaces/BookController.js'
+
+export default getBooks

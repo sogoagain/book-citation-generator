@@ -1,22 +1,96 @@
-[![HitCount](http://hits.dwyl.com/sogoagain/book-citation-generator.svg)](http://hits.dwyl.com/sogoagain/book-citation-generator)
+# Book Citation Generator
 
-# [도서 출처 표기 문구 생성기](https://book.sogoagain.com)
+도서 검색과 학술 인용 형식 생성을 위한 웹 애플리케이션입니다.
 
-## 접속 URL
+## Features
 
-- [https://book.sogoagain.com](https://book.sogoagain.com)
+- 도서 검색 (카카오 API)
+- APA, MLA 인용 형식 자동 생성
+- 반응형 웹 디자인
 
-## 목적
+## Tech Stack
 
-글을 작성할 때 도서의 문구를 인용하면 출처 표기를 해야하는데, 이 때 사용할 수 있도록 출처표기법에 따라 문구를 생성해주는 웹 사이트
+- **Frontend**: React + Vite, Tailwind CSS
+- **Backend**: Node.js, Serverless Framework (AWS Lambda)
+- **API**: Kakao Book Search API
 
-## 사용 기술
+## Quick Start
 
-- front-end: ReactJS
-- back-end: AWS Serverless(Node.js), Serverless Framework
+### Prerequisites
 
-## 프로젝트 관리
+- Node.js 20+
+- 카카오 API 키
 
-- 사용자 스토리 기반의 이슈 생성
-- 칸반 보드를 이용한 프로젝트 관리
-- 다음(Kakao) 검색 API 활용
+### Environment Setup
+
+1. **Backend 환경변수**
+   ```bash
+   # backend/.env
+   KAKAO_API_KEY=KakaoAK your_api_key
+   FRONT_DOMAIN=http://localhost:3000
+   ```
+
+2. **Frontend 환경변수**
+   ```bash
+   # frontend/.env
+   VITE_BOOK_API_URL=http://localhost:4000
+   ```
+
+### Development
+
+```bash
+# Backend
+cd backend
+npm install
+npm start
+
+# Frontend  
+cd frontend
+npm install
+npm run dev
+```
+
+### Testing
+
+```bash
+# Backend tests
+cd backend
+npm test
+
+# Frontend tests
+cd frontend
+npm test
+```
+
+### Deployment
+
+자동 배포는 `master` 브랜치에 push 시 GitHub Actions에서 실행됩니다.
+
+수동 배포:
+```bash
+# Backend to AWS
+cd backend
+npm run deploy
+
+# Frontend to S3
+cd frontend
+npm run build
+aws s3 sync dist/ s3://${AWS_S3_BUCKET} --delete
+```
+
+## Project Structure
+
+```
+├── backend/          # Serverless API
+│   ├── src/
+│   │   ├── handler.js
+│   │   ├── interfaces/
+│   │   └── repository/
+│   └── serverless.yml
+└── frontend/         # React SPA
+    ├── src/
+    │   ├── components/
+    │   ├── containers/
+    │   └── utils/
+    └── vite.config.js
+```
