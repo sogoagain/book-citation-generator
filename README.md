@@ -1,11 +1,11 @@
 # Book Citation Generator
 
-도서 검색과 인용 형식 생성을 제공하는 웹 애플리케이션입니다.
+도서 검색과 학술 인용 형식 생성을 위한 웹 애플리케이션입니다.
 
 ## Features
 
 - 도서 검색 (카카오 API)
-- 다양한 인용 형식 생성 (APA, MLA, Chicago 등)
+- APA, MLA 인용 형식 자동 생성
 - 반응형 웹 디자인
 
 ## Tech Stack
@@ -27,7 +27,6 @@
    ```bash
    # backend/.env
    KAKAO_API_KEY=KakaoAK your_api_key
-   API_KAKAO=https://dapi.kakao.com/v3/search/book
    FRONT_DOMAIN=http://localhost:3000
    ```
 
