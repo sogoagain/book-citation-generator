@@ -41,7 +41,7 @@ const SearchComponent = ({ refreshCount, onSubmit }) => {
   const handleBookDetail = book => {
     showBookDetail(book)
     const bookId = getPrimaryIsbn(book.isbn) || book.isbn
-    navigate(`/book/${bookId}`)
+    navigate(`/book/${bookId}`, { state: { book } })
   }
 
   return (

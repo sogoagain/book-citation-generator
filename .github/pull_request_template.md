@@ -8,7 +8,7 @@
 
 <!-- PR과 관련된 이슈 링크를 작성합니다. -->
 
-- https://github.com/sogoagain/blog/issues/
+- https://github.com/sogoagain/book-citation-generator/issues/
 
 ## 회고
 

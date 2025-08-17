@@ -44,8 +44,9 @@ custom:
     sourcemap: false
     target: node20
     platform: node
-    format: cjs
-    mainFields: [main, module]
+    format: esm
+    outputFileExtension: .mjs
+    mainFields: [module, main]
     exclude:
       - aws-sdk
 

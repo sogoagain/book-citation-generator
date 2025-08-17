@@ -11,9 +11,9 @@ vi.mock('../containers/BookDetailContainer.jsx', () => ({
   ),
 }))
 
-const renderWithRouter = (initialEntry = '/book/1234567890') => {
+const renderWithRouter = (initialEntry = '/book/1234567890', state = null) => {
   return render(
-    <MemoryRouter initialEntries={[initialEntry]}>
+    <MemoryRouter initialEntries={[{ pathname: initialEntry, state }]}>
       <Routes>
         <Route path='/book/:bookId' element={<BookDetailPage />} />
         <Route path='/' element={<div>Home Page</div>} />
@@ -41,6 +41,7 @@ describe('BookDetailPage', () => {
         visible: true,
         book: mockBook,
       },
+      showBookDetail: vi.fn(),
     })
 
     renderWithRouter()
@@ -55,6 +56,7 @@ describe('BookDetailPage', () => {
         visible: false,
         book: null,
       },
+      showBookDetail: vi.fn(),
     })
 
     renderWithRouter()
@@ -71,6 +73,7 @@ describe('BookDetailPage', () => {
         visible: true,
         book: null,
       },
+      showBookDetail: vi.fn(),
     })
 
     renderWithRouter()
@@ -87,9 +90,58 @@ describe('BookDetailPage', () => {
         visible: true,
         book: { ...mockBook, isbn: 'different-isbn' },
       },
+      showBookDetail: vi.fn(),
     })
 
     renderWithRouter()
+
+    expect(screen.getByText('Home Page')).toBeInTheDocument()
+    expect(
+      screen.queryByTestId('book-detail-container')
+    ).not.toBeInTheDocument()
+  })
+
+  it('renders BookDetailContainer when book is passed via location.state', () => {
+    useAppStore.mockReturnValue({
+      bookDetail: {
+        visible: false,
+        book: null,
+      },
+      showBookDetail: vi.fn(),
+    })
+
+    renderWithRouter('/book/1234567890', { book: mockBook })
+
+    expect(screen.getByTestId('book-detail-container')).toBeInTheDocument()
+    expect(screen.getByText('Book Detail for: 테스트 도서')).toBeInTheDocument()
+  })
+
+  it('calls showBookDetail when book is passed via location.state', () => {
+    const mockShowBookDetail = vi.fn()
+    useAppStore.mockReturnValue({
+      bookDetail: {
+        visible: false,
+        book: null,
+      },
+      showBookDetail: mockShowBookDetail,
+    })
+
+    renderWithRouter('/book/1234567890', { book: mockBook })
+
+    expect(mockShowBookDetail).toHaveBeenCalledWith(mockBook)
+  })
+
+  it('redirects to home when location.state book ISBN does not match URL parameter', () => {
+    useAppStore.mockReturnValue({
+      bookDetail: {
+        visible: false,
+        book: null,
+      },
+      showBookDetail: vi.fn(),
+    })
+
+    const bookWithDifferentIsbn = { ...mockBook, isbn: 'different-isbn' }
+    renderWithRouter('/book/1234567890', { book: bookWithDifferentIsbn })
 
     expect(screen.getByText('Home Page')).toBeInTheDocument()
     expect(
