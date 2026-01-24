@@ -8,10 +8,12 @@ const fetchBooks = async ({ keyword, page = 1, size = 10 }) => {
     throw new Error('Keyword is required')
   }
 
-  const url = new URL(`${API_BASE_URL}/books`)
-  url.searchParams.append('keyword', keyword)
-  url.searchParams.append('page', page.toString())
-  url.searchParams.append('size', size.toString())
+  const params = new URLSearchParams({
+    keyword,
+    page: page.toString(),
+    size: size.toString(),
+  })
+  const url = `${API_BASE_URL}/books?${params}`
 
   try {
     const response = await fetch(url)

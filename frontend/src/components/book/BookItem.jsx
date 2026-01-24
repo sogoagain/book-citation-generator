@@ -1,78 +1,90 @@
+import { BsChevronDown } from 'react-icons/bs'
 import BookThumbnail from './BookThumbnail.jsx'
+import CitationPanel from '../citation/CitationPanel.jsx'
 
-const BookItem = ({ tabIndex, book, onClick }) => {
+const BookItem = ({ book, expanded, onToggle }) => {
   const handleClick = () => {
-    onClick(book)
+    onToggle(book)
   }
 
   const handleKeyDown = e => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault()
-      onClick(book)
+      onToggle(book)
     }
   }
 
   return (
     <div
-      onClick={handleClick}
-      onKeyDown={handleKeyDown}
-      role='button'
-      tabIndex={tabIndex}
-      className='bg-white rounded-lg border border-slate-200 hover:border-slate-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/40 focus:outline-none cursor-pointer p-4 transition-all duration-200'
-      aria-label={`${book.title} 도서 상세 정보 보기`}
+      className={`bg-white rounded-lg border transition-all duration-200 ${
+        expanded
+          ? 'border-indigo-200 ring-1 ring-indigo-100'
+          : 'border-slate-200 hover:border-slate-300'
+      }`}
     >
-      <div className='flex gap-4'>
-        <div className='flex-shrink-0'>
-          <div className='w-16 h-20 sm:w-20 sm:h-26 rounded overflow-hidden'>
-            <BookThumbnail
-              thumbnail={book.thumbnail}
-              title={book.title}
-              compact={true}
+      <div
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
+        role='button'
+        tabIndex={0}
+        className='p-4 cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500/40 rounded-lg'
+        aria-expanded={expanded}
+        aria-label={`${book.title} 인용 생성`}
+      >
+        <div className='flex gap-3'>
+          <div className='flex-shrink-0'>
+            <div className='w-12 h-16 sm:w-14 sm:h-[72px] rounded overflow-hidden'>
+              <BookThumbnail
+                thumbnail={book.thumbnail}
+                title={book.title}
+                compact={true}
+              />
+            </div>
+          </div>
+
+          <div className='flex-1 min-w-0'>
+            <h3 className='font-medium text-slate-900 text-sm leading-snug line-clamp-2'>
+              {book.title}
+            </h3>
+            <div className='mt-1 text-xs text-slate-500 space-y-0.5'>
+              {book.authors && book.authors.length > 0 && (
+                <div className='truncate'>{book.authors.join(', ')}</div>
+              )}
+              <div className='flex items-center gap-1.5'>
+                {book.publisher && (
+                  <span className='truncate'>{book.publisher}</span>
+                )}
+                {book.publisher && book.datetime && (
+                  <span className='text-slate-300'>·</span>
+                )}
+                {book.datetime && (
+                  <span>{new Date(book.datetime).getFullYear()}</span>
+                )}
+              </div>
+              {book.translators && book.translators.length > 0 && (
+                <div className='text-slate-400 truncate'>
+                  역: {book.translators.join(', ')}
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className='flex-shrink-0 self-center'>
+            <BsChevronDown
+              className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${
+                expanded ? 'rotate-180' : ''
+              }`}
+              aria-hidden='true'
             />
           </div>
         </div>
-
-        <div className='flex-1 min-w-0'>
-          <h3
-            className='font-semibold text-slate-900 text-sm sm:text-base mb-2'
-            style={{
-              display: '-webkit-box',
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: 'vertical',
-              overflow: 'hidden',
-            }}
-          >
-            {book.title}
-          </h3>
-
-          <div className='space-y-1 text-xs sm:text-sm text-slate-600'>
-            {book.authors && book.authors.length > 0 && (
-              <div className='truncate'>
-                {book.authors.slice(0, 2).join(', ')}
-                {book.authors.length > 2 && ` 외 ${book.authors.length - 2}명`}
-              </div>
-            )}
-
-            <div className='flex items-center gap-2 text-slate-500'>
-              {book.publisher && (
-                <span className='truncate'>{book.publisher}</span>
-              )}
-              {book.publisher && book.datetime && <span>·</span>}
-              {book.datetime && (
-                <span>{new Date(book.datetime).getFullYear()}</span>
-              )}
-            </div>
-
-            {book.translators && book.translators.length > 0 && (
-              <div className='text-slate-500 truncate'>
-                번역: {book.translators.slice(0, 1).join(', ')}
-                {book.translators.length > 1 &&
-                  ` 외 ${book.translators.length - 1}명`}
-              </div>
-            )}
-          </div>
-        </div>
       </div>
+
+      {expanded && (
+        <div className='px-4 pb-4'>
+          <CitationPanel book={book} />
+        </div>
+      )}
     </div>
   )
 }

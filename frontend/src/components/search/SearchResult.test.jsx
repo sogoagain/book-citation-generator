@@ -3,7 +3,6 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import SearchResult from './SearchResult'
 
 describe('SearchResult', () => {
-  const mockOnDetail = vi.fn()
   const mockOnChange = vi.fn()
 
   const mockBooks = [
@@ -13,7 +12,6 @@ describe('SearchResult', () => {
       authors: ['작가1'],
       publisher: '출판사1',
       datetime: '2023-01-01T00:00:00Z',
-      contents: '테스트 도서 내용입니다.',
       thumbnail: 'https://example.com/image1.jpg',
     },
     {
@@ -22,7 +20,6 @@ describe('SearchResult', () => {
       authors: ['작가2', '작가3'],
       publisher: '출판사2',
       datetime: '2023-02-01T00:00:00Z',
-      contents: '또 다른 테스트 도서 내용입니다.',
     },
   ]
 
@@ -33,7 +30,6 @@ describe('SearchResult', () => {
   }
 
   beforeEach(() => {
-    mockOnDetail.mockClear()
     mockOnChange.mockClear()
   })
 
@@ -42,12 +38,11 @@ describe('SearchResult', () => {
       <SearchResult
         dataSource={mockBooks}
         pagination={defaultPagination}
-        onDetail={mockOnDetail}
         onChange={mockOnChange}
       />
     )
 
-    expect(screen.getByText(/검색 결과 25개/)).toBeInTheDocument()
+    expect(screen.getByText('25건')).toBeInTheDocument()
     expect(screen.getByText('테스트 도서 1')).toBeInTheDocument()
     expect(screen.getByText('테스트 도서 2')).toBeInTheDocument()
   })
@@ -57,7 +52,6 @@ describe('SearchResult', () => {
       <SearchResult
         dataSource={mockBooks}
         pagination={defaultPagination}
-        onDetail={mockOnDetail}
         onChange={mockOnChange}
       />
     )
@@ -73,7 +67,6 @@ describe('SearchResult', () => {
       <SearchResult
         dataSource={mockBooks}
         pagination={smallPagination}
-        onDetail={mockOnDetail}
         onChange={mockOnChange}
       />
     )
@@ -83,18 +76,35 @@ describe('SearchResult', () => {
     ).not.toBeInTheDocument()
   })
 
-  it('calls onDetail when book item is clicked', () => {
+  it('expands citation panel when book item is clicked', () => {
     render(
       <SearchResult
         dataSource={mockBooks}
         pagination={defaultPagination}
-        onDetail={mockOnDetail}
         onChange={mockOnChange}
       />
     )
 
     fireEvent.click(screen.getByText('테스트 도서 1'))
-    expect(mockOnDetail).toHaveBeenCalledWith(mockBooks[0])
+
+    expect(screen.getByText(/참고문헌/)).toBeInTheDocument()
+    expect(screen.getByText(/본문 내 인용/)).toBeInTheDocument()
+  })
+
+  it('collapses previous item when another is clicked', () => {
+    render(
+      <SearchResult
+        dataSource={mockBooks}
+        pagination={defaultPagination}
+        onChange={mockOnChange}
+      />
+    )
+
+    fireEvent.click(screen.getByText('테스트 도서 1'))
+    expect(screen.getByText(/참고문헌/)).toBeInTheDocument()
+
+    fireEvent.click(screen.getByText('테스트 도서 2'))
+    expect(screen.getAllByText(/참고문헌/).length).toBe(1)
   })
 
   it('renders empty state when no books provided', () => {
@@ -102,7 +112,6 @@ describe('SearchResult', () => {
       <SearchResult
         dataSource={[]}
         pagination={defaultPagination}
-        onDetail={mockOnDetail}
         onChange={mockOnChange}
       />
     )
@@ -116,27 +125,10 @@ describe('SearchResult', () => {
       <SearchResult
         dataSource={null}
         pagination={defaultPagination}
-        onDetail={mockOnDetail}
         onChange={mockOnChange}
       />
     )
 
     expect(screen.getByText('검색 결과가 없습니다')).toBeInTheDocument()
-  })
-
-  it('displays pagination with current page', () => {
-    const multiPagePagination = { page: 2, size: 10, total: 25 }
-    render(
-      <SearchResult
-        dataSource={mockBooks}
-        pagination={multiPagePagination}
-        onDetail={mockOnDetail}
-        onChange={mockOnChange}
-      />
-    )
-
-    expect(
-      screen.getByRole('navigation', { name: '검색 결과 페이지네이션' })
-    ).toBeInTheDocument()
   })
 })

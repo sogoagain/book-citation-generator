@@ -10,44 +10,38 @@ function renderApp() {
       <App />
     </TestWrapper>
   )
-
-  return {
-    getLinkByName: name => screen.getByRole('link', { name }),
-    getButtonByName: name => screen.getByRole('button', { name }),
-    getSearchInput: () => screen.getByPlaceholderText(/도서 검색/),
-  }
 }
 
 describe('<App />', () => {
-  it('renders header', () => {
+  it('renders header with title', () => {
     renderApp()
 
     expect(
-      screen.getByRole('heading', { name: /도서 학술 출처 생성기/ })
+      screen.getByRole('heading', { name: /도서 인용 생성기/ })
     ).toBeInTheDocument()
   })
 
   it('renders search form', () => {
-    const { getButtonByName, getSearchInput } = renderApp()
+    renderApp()
 
-    expect(getSearchInput()).toBeInTheDocument()
-    expect(getButtonByName(/검색/)).toBeInTheDocument()
+    expect(
+      screen.getByPlaceholderText(/도서 제목, 저자, 출판사/)
+    ).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /검색/ })).toBeInTheDocument()
   })
 
-  it('has accessibility features', () => {
+  it('has semantic structure', () => {
     renderApp()
 
     expect(screen.getByRole('banner')).toBeInTheDocument()
     expect(screen.getByRole('main')).toBeInTheDocument()
     expect(screen.getByRole('contentinfo')).toBeInTheDocument()
     expect(screen.getByRole('search')).toBeInTheDocument()
-    expect(screen.getByText('메인 콘텐츠로 바로가기')).toBeInTheDocument()
   })
 
-  it('renders footer', () => {
+  it('shows APA 7th Edition label', () => {
     renderApp()
 
-    expect(screen.getByRole('contentinfo')).toBeInTheDocument()
-    expect(screen.getByText(/APA 7판 · MLA 9판 지원/)).toBeInTheDocument()
+    expect(screen.getByText('APA 7th Edition')).toBeInTheDocument()
   })
 })
