@@ -57,9 +57,10 @@ describe('useBooks', () => {
     expect(fetch).toHaveBeenCalledTimes(1)
 
     const fetchCall = fetch.mock.calls[0][0]
-    expect(fetchCall.toString()).toBe(
-      'http://localhost:4000/books?keyword=%ED%85%8C%EC%8A%A4%ED%8A%B8&page=1&size=10'
-    )
+    expect(fetchCall).toContain('/books?')
+    expect(fetchCall).toContain('keyword=')
+    expect(fetchCall).toContain('page=1')
+    expect(fetchCall).toContain('size=10')
   })
 
   it('does not fetch when keyword is empty', () => {

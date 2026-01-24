@@ -1,71 +1,61 @@
-import PaginationUtils from '../../utils/PaginationUtils'
-
 const Pagination = ({ pagination, onChange }) => {
-  const LEFT_ANGLE_BRACKET = '<'
-  const RIGHT_ANGLE_BRACKET = '>'
+  const { page, size, total } = pagination
+  const totalPages = Math.ceil(total / size)
+  const isFirstPage = page <= 1
+  const isLastPage = page >= totalPages
 
-  const onPrevBtnClick = () => {
-    const page = pagination.page - 1
-    onChange(page)
+  const getSelectablePages = () => {
+    const pages = []
+    const start = Math.max(1, page - 2)
+    const end = Math.min(totalPages, page + 2)
+    for (let i = start; i <= end; i++) {
+      pages.push(i)
+    }
+    return pages
   }
-
-  const onNextBtnClick = () => {
-    const page = pagination.page + 1
-    onChange(page)
-  }
-
-  const onPageClick = e => {
-    const page = parseInt(e.target.value, 10)
-    onChange(page)
-  }
-
-  const isFirstPage = () => PaginationUtils.isFirstPage(pagination)
-
-  const isLastPage = () => PaginationUtils.isLastPage(pagination)
 
   return (
     <nav aria-label='Page navigation' className='flex justify-center'>
       <div className='flex items-center space-x-1'>
         <button
           type='button'
-          onClick={onPrevBtnClick}
-          disabled={isFirstPage()}
+          onClick={() => onChange(page - 1)}
+          disabled={isFirstPage}
           className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
-            isFirstPage()
-              ? 'text-gray-400 cursor-not-allowed bg-gray-100'
-              : 'text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 hover:text-gray-900'
+            isFirstPage
+              ? 'text-slate-300 cursor-not-allowed'
+              : 'text-slate-600 hover:bg-slate-100'
           }`}
         >
-          {LEFT_ANGLE_BRACKET}
+          {'<'}
         </button>
 
-        {PaginationUtils.getSelectablePages(pagination).map(page => (
+        {getSelectablePages().map(p => (
           <button
-            key={page}
+            key={p}
             type='button'
-            onClick={onPageClick}
-            value={page}
+            onClick={() => onChange(p)}
             className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
-              pagination.page === page
-                ? 'text-white bg-indigo-600 border border-indigo-600'
-                : 'text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 hover:text-gray-900'
+              page === p
+                ? 'text-white bg-indigo-600'
+                : 'text-slate-600 hover:bg-slate-100'
             }`}
           >
-            {page}
+            {p}
           </button>
         ))}
 
         <button
           type='button'
-          onClick={onNextBtnClick}
-          disabled={isLastPage()}
+          onClick={() => onChange(page + 1)}
+          disabled={isLastPage}
           className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
-            isLastPage()
-              ? 'text-gray-400 cursor-not-allowed bg-gray-100'
-              : 'text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 hover:text-gray-900'
+            isLastPage
+              ? 'text-slate-300 cursor-not-allowed'
+              : 'text-slate-600 hover:bg-slate-100'
           }`}
         >
-          {RIGHT_ANGLE_BRACKET}
+          {'>'}
         </button>
       </div>
     </nav>
