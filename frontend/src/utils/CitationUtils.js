@@ -23,12 +23,8 @@ const CitationUtils = {
 
   extractYear: datetime => {
     if (!datetime) return '날짜 미상'
-    try {
-      const year = new Date(datetime).getFullYear()
-      return isNaN(year) ? '날짜 미상' : year.toString()
-    } catch {
-      return '날짜 미상'
-    }
+    const match = String(datetime).match(/^(\d{4})/)
+    return match ? match[1] : '날짜 미상'
   },
 
   formatSingleAuthorReference: author => {

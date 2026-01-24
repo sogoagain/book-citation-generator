@@ -58,7 +58,7 @@ const BookItem = ({ book, expanded, onToggle }) => {
                   <span className='text-slate-300'>·</span>
                 )}
                 {book.datetime && (
-                  <span>{new Date(book.datetime).getFullYear()}</span>
+                  <span>{String(book.datetime).slice(0, 4)}</span>
                 )}
               </div>
               {book.translators && book.translators.length > 0 && (
